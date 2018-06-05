@@ -4,28 +4,36 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ApplicantInfoComponent } from './applicant-info/applicant-info.component';
-import { OwnerInfoComponent } from './owner-info/owner-info.component';
-import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './auth/auth.service';
+import { StoreSignup } from './auth/storeSignup.service';
 
+
+import { Routes, RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+
+const appRoutes = [
+  {path: '', component: SignupComponent},
+  {path: 'signin', component: SigninComponent},
+  { path: 'loggedin', component: HeaderComponent}
+ 
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApplicantInfoComponent,
-    OwnerInfoComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService, StoreSignup],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
