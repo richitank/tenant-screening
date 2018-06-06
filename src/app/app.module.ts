@@ -8,7 +8,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { StoreSignup } from './auth/storeSignup.service';
-
+import { HttpClientModule } from '@angular/common/http'
 
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -16,7 +16,7 @@ import { HeaderComponent } from './header/header.component';
 const appRoutes = [
   {path: '', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
-  { path: 'loggedin', component: HeaderComponent}
+  // { path: 'loggedin', component: HeaderComponent}
  
 ];
 
@@ -31,7 +31,8 @@ const appRoutes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [AuthService, StoreSignup],
   bootstrap: [AppComponent]

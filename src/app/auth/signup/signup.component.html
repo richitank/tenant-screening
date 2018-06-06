@@ -3,26 +3,43 @@
       
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <form (ngSubmit)="onSignup(f)" #f="ngForm">
+            <h2>Choose Your Screening Method</h2>
+              <label>
+                  <input type="radio" name="opt1" value="1" />
+                  <img src="https://www.rentecdirect.com/images/join-the-club.png">
+              </label>
+              <label>
+                  <input type="radio" name="opt1" value="2"  />
+                  <img src="https://www.rentecdirect.com/images/join-the-club.png">
+                </label>              
+                <label>
+                    <input type="radio" name="opt1" value="3  "  />
+                    <img src="https://www.rentecdirect.com/images/join-the-club.png">
+                </label>
+              
+            <hr>
             <h2>Enter Your Applicant's Information</h2>
           <div id="user-data">
-            <div class="form-group">
+            <div class="row">
+              <div class="form-group col-xs-6">
               <label for="firstName">First Name</label>
               <input type="text" id="firstName" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group col-xs-6">
               <label for="lastName">Last Name</label>
               <input type="text" id="lastName" class="form-control">
             </div>
+          </div>
             <div class="form-group">
               <label for="applicantEmail">Their Email Address</label>
-              <input type="email" id="applicantEmail" class="form-control">
+              <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control">
             </div>
           </div>
         
      
-    
+          
 
-<br><br>
+<br><hr>
     
         <h2>Create Your Free Account</h2>
 
@@ -31,13 +48,15 @@
           <label for="noOfUnits">No Of Units Managed</label>
           <input type="number" min='1' id="noOfUnits" name="noOfUnits" ngModel class="form-control">
         </div>
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="ownerFirstName" name="firstName" ngModel class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="email" id="ownerLastName" name="lastName" ngModel class="form-control">
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <label for="firstName">First Name</label>
+            <input type="text" id="ownerFirstName" name="firstName" ngModel class="form-control">
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="lastName">Last Name</label>
+            <input type="email" id="ownerLastName" name="lastName" ngModel class="form-control">
+          </div>
         </div>
       <div class="form-group">
         <label for="email">Mail</label>
