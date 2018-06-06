@@ -24,7 +24,9 @@ app.post('/api/welcome', (req, res, next) => {
     const output = `<h3>
     <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
     <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
-    <p>Please go to the following link to proceed: <a href="offrbox.com">offrbox.com</a>`;
+    <p>Please go to the following link to proceed: <a href="offrbox.com">Get Started</a></p>
+    <br>
+    <p>Have questions? Please contact <a href="http://localhost:4200"> Customer Support</a></p>`;
 
     // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
@@ -66,10 +68,6 @@ app.post('/api/welcome', (req, res, next) => {
   });
   });
 
-
-   
-  
-
 app.use('/api/welcome', (req, res, next) => {
     const emailList = [
         {
@@ -80,12 +78,9 @@ app.use('/api/welcome', (req, res, next) => {
             id: 'adsdffbrtbrt', 
             email: 'sujatha@sujji.com'
         }
-
-
     ]
 
-    
     res.status(200).json(emailList);
 });
 
-module.exports = app;
+module.exports = app;   

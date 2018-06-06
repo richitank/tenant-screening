@@ -54,10 +54,14 @@ export class SignupComponent implements OnInit {
      const infoSentToServer = {email: applicantEmail, screeningCost: option, ownerfirstName: firstName}
      this.http.post<{message: string}>('http://localhost:3000/api/welcome', infoSentToServer)
      .subscribe((responseData) => {
-         console.log(responseData.message);
-         
+         console.log(responseData.message);         
      })
+
       
-  } 
+    }
+    
+    addAnotherApplicant(){
+      console.log("addAnotherApplicant testing");
+    }
 
 }

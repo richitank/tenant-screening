@@ -38,10 +38,10 @@
             </div>
             <div class="form-group">
               <label for="applicantPhoneNo">Phone (Optional): </label>
-              <input type="tel" minlength="9" maxlength="14" name="applicantPhoneNo" ngModel class="form-control">
+              <input type="tel" minlength="9" maxlength="13" name="applicantPhoneNo" ngModel class="form-control">
             </div>
             <br>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" (click) = addAnotherApplicant()>
               Add Another Applicant
             </button>
           </div> 
@@ -67,7 +67,7 @@
         </div>
         <div class="form-group">
           <label for="applicantPhoneNo">Phone (Optional): </label>
-          <input type="tel" pattern='^\+?\d{0,13}' name="applicantPhoneNo" ngModel class="form-control" >
+          <input type="tel" minlength="9" maxlength="13" name="applicantPhoneNo" ngModel class="form-control" >
         </div>
       <div class="form-group">
         <label for="email">Mail</label>
@@ -84,7 +84,7 @@
           required>
       </div>
       <div class="form-group">
-        <input type="checkbox" required> <span>I certify That I've read the terms and conditions</span>
+        <input type="checkbox" ngModel name="checkbox" required> <span>I certify That I've read the terms and conditions</span>
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Send Requests</button>
     </form>
