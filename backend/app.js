@@ -22,8 +22,8 @@ app.use((req, res, next) => {
 
 app.post('/api/welcome', (req, res, next) => {
     const output = `
-    <p>The owner has requested for a background screening with the following: <br>
-    <h3> ${req.body.email} `;
+    <p>Hi, <br> This is a mail for you from ${req.body.ownerfirstName} has requested you for a background screening with the following <br>
+    <h3> ${req.body.screeningCost} `;
 
     // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
@@ -43,7 +43,7 @@ app.post('/api/welcome', (req, res, next) => {
   let mailOptions = {
       from: '"OffrBox" <amshu.k1956@gmail.com>', // sender address
       to: req.body.email, // list of receivers
-      subject: 'Node Contact Request', // Subject line
+      subject: 'OffrBox - Background Screening Required', // Subject line
       text: 'Hello world?', // plain text body
       html: output // html body
   };

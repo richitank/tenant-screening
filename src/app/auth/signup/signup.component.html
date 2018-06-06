@@ -5,15 +5,17 @@
         <form (ngSubmit)="onSignup(f)" #f="ngForm">
             <h2>Choose Your Screening Method</h2>
               <label>
-                  <input type="radio" name="opt1" value="1" />
+                 
+
+                  <input type="radio" name="opt1" value="1" ngModel />
                   <img src="https://www.rentecdirect.com/images/join-the-club.png">
               </label>
               <label>
-                  <input type="radio" name="opt1" value="2"  />
+                  <input type="radio" name="opt1" value="2" ngModel  />
                   <img src="https://www.rentecdirect.com/images/join-the-club.png">
                 </label>              
                 <label>
-                    <input type="radio" name="opt1" value="3  "  />
+                    <input type="radio" name="opt1" value="3" ngModel  />
                     <img src="https://www.rentecdirect.com/images/join-the-club.png">
                 </label>
               
@@ -34,12 +36,9 @@
               <label for="applicantEmail">Their Email Address</label>
               <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control">
             </div>
-          </div>
-        
-     
+          </div> 
+          <hr>
           
-
-<br><hr>
     
         <h2>Create Your Free Account</h2>
 
