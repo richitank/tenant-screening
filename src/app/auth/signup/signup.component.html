@@ -5,7 +5,7 @@
         <form (ngSubmit)="onSignup(f)" #f="ngForm">
             <h2>Choose Your Screening Method</h2>
               <label>
-                 
+                 <a></a>
 
                   <input type="radio" name="opt1" value="1" ngModel />
                   <img src="https://www.rentecdirect.com/images/join-the-club.png">
@@ -25,17 +25,25 @@
             <div class="row">
               <div class="form-group col-xs-6">
               <label for="firstName">First Name</label>
-              <input type="text" id="firstName" class="form-control">
+              <input type="text" id="firstName" class="form-control" name="applicantFirstName" ngModel required>
             </div>
             <div class="form-group col-xs-6">
               <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" class="form-control">
+              <input type="text" id="lastName" class="form-control" name="applicantLastName" ngModel required>
             </div>
           </div>
             <div class="form-group">
               <label for="applicantEmail">Their Email Address</label>
-              <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control">
+              <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control" required>
             </div>
+            <div class="form-group">
+              <label for="applicantPhoneNo">Phone (Optional): </label>
+              <input type="tel" minlength="9" maxlength="14" name="applicantPhoneNo" ngModel class="form-control">
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary">
+              Add Another Applicant
+            </button>
           </div> 
           <hr>
           
@@ -45,21 +53,25 @@
       <p>Already a member? <a routerLink="/signin">Sign in</a></p>
         <div class="form-group">
           <label for="noOfUnits">No Of Units Managed</label>
-          <input type="number" min='1' id="noOfUnits" name="noOfUnits" ngModel class="form-control">
+          <input type="number" min='1' id="noOfUnits" name="noOfUnits" ngModel class="form-control" required>
         </div>
         <div class="row">
           <div class="form-group col-xs-6">
             <label for="firstName">First Name</label>
-            <input type="text" id="ownerFirstName" name="firstName" ngModel class="form-control">
+            <input type="text" id="ownerFirstName" name="firstName" ngModel class="form-control" required>
           </div>
           <div class="form-group col-xs-6">
             <label for="lastName">Last Name</label>
-            <input type="email" id="ownerLastName" name="lastName" ngModel class="form-control">
+            <input type="email" id="ownerLastName" name="lastName" ngModel class="form-control" required>
           </div>
+        </div>
+        <div class="form-group">
+          <label for="applicantPhoneNo">Phone (Optional): </label>
+          <input type="tel" pattern='^\+?\d{0,13}' name="applicantPhoneNo" ngModel class="form-control" >
         </div>
       <div class="form-group">
         <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
+        <input type="email" id="email" name="email" ngModel class="form-control" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -68,7 +80,11 @@
           id="password"
           name="password"
           ngModel
-          class="form-control">
+          class="form-control"
+          required>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" required> <span>I certify That I've read the terms and conditions</span>
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Send Requests</button>
     </form>

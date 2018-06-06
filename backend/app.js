@@ -21,9 +21,10 @@ app.use((req, res, next) => {
   });
 
 app.post('/api/welcome', (req, res, next) => {
-    const output = `
-    <p>Hi, <br> This is a mail for you from ${req.body.ownerfirstName} has requested you for a background screening with the following <br>
-    <h3> ${req.body.screeningCost} `;
+    const output = `<h3>
+    <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
+    <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
+    <p>Please go to the following link to proceed: <a href="offrbox.com">offrbox.com</a>`;
 
     // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({

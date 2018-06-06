@@ -17,11 +17,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-
   info = [{}];
-
-  applicantInfo = {}
-
 
   onSignup(form: NgForm) {
     this.authService.isAuthenticated()
@@ -34,22 +30,6 @@ export class SignupComponent implements OnInit {
     const option = form.value.opt1;
     const applicantEmail = form.value.applicantEmail;
 
-
-    // let screeningCost = 39.990
-    // if(option === 1) {
-    //   screeningCost = 39.99
-    //   console.log(screeningCost)
-    // }
-    // else if(option === 2) {
-    //   screeningCost = 24.99
-    //   console.log(screeningCost)
-
-    // }  
-    // else if(option === 3){
-    //   screeningCost = 24.99
-    //   console.log(screeningCost)
-
-    // }
 
     console.log("fgdffgdfg=>" +option)
     
@@ -71,8 +51,8 @@ export class SignupComponent implements OnInit {
       );
 
 
-     const applicantInfo = {email: applicantEmail, screeningCost: option}
-     this.http.post<{message: string}>('http://localhost:3000/api/welcome', applicantInfo)
+     const infoSentToServer = {email: applicantEmail, screeningCost: option, ownerfirstName: firstName}
+     this.http.post<{message: string}>('http://localhost:3000/api/welcome', infoSentToServer)
      .subscribe((responseData) => {
          console.log(responseData.message);
          
