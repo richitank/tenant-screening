@@ -12,9 +12,11 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes = [
-  {path: '', component: SignupComponent},
+  {path: '', component: HomeComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   // { path: 'loggedin', component: HeaderComponent}
  
@@ -25,7 +27,8 @@ const appRoutes = [
     AppComponent,
     SigninComponent,
     SignupComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
