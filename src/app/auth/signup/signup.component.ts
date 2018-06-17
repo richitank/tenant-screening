@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { StoreSignup } from '../storeSignup.service';
 import { HttpClient } from "@angular/common/http";
+import { AuthSignup } from '../authSignup.model';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
  }
 
-  info = [{}];
+  info = [];
   
 
   onSignup(form: NgForm) {
@@ -72,10 +73,12 @@ export class SignupComponent implements OnInit {
        noOfUnits: noOfUnits
 
       }
-     this.http.post<{message: string}>('http://localhost:3000/api/welcome', infoSentToServer)
-     .subscribe((responseData) => {
-         console.log(responseData.message);         
-     })
+    //  this.http.post<{message: string}>('http://localhost:3000/api/welcome', infoSentToServer)
+    //  .subscribe((responseData) => {
+    //      console.log(responseData.message);         
+    //  })
+    this.storeSignup.backend(infoSentToServer)
+    this.storeSignup.getInfo();
     
   }
 

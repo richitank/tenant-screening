@@ -94,19 +94,36 @@ app.post('/api/welcome', (req, res, next) => {
   });
   });
 
+// app.get('/api/welcome', (req, res, next) => {
+//     ScreeningRequestForm.find()
+//         .then(documents => {
+//             res.status(200).json({
+//                 message: "GETting data from DB...",
+//                 ScreeningRequestForms: documents
+//             });
+//         })
+//         .catch((error) => {
+//             console.log("Error:" + error)
+//         })
+
+
+// });
+
 app.get('/api/welcome', (req, res, next) => {
-    ScreeningRequestForm.find()
-        .then(documents => {
-            res.status(200).json({
-                message: "GETtin data from DB...",
-                ScreeningRequestForms: documents
-            });
-        })
-        .catch((error) => {
-            console.log("Error:" + error)
-        })
-
-
+    const posts = [
+        {
+            id: "kjb3345434",
+            title: "test1"
+        },
+        {
+            id: "sdf34f34",
+            title: "test2"
+        }
+    ];
+    res.status(200).json({
+        message: 'Posts sent successfully',
+        posts: posts
+    });
 });
 
 

@@ -34,7 +34,7 @@
           </div>
             <div class="form-group">
               <label for="applicantEmail">Their Email Address</label>
-              <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control" required>
+              <input type="email" id="applicantEmail" name="applicantEmail" ngModel class="form-control" required email>
             </div>
             <div class="form-group">
               <label for="applicantPhoneNo">Phone (Optional): </label>
@@ -88,7 +88,7 @@
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Send Requests</button>
     </form>
-    <p>{{details}}</p>
+    <a routerLink="/dashboard">dashboard</a>
   </div>
 </div>
 </div>

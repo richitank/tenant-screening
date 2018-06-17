@@ -8,16 +8,22 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { StoreSignup } from './auth/storeSignup.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  
   // { path: 'loggedin', component: HeaderComponent}
  
 ];
@@ -28,14 +34,19 @@ const appRoutes = [
     SigninComponent,
     SignupComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [AuthService, StoreSignup],
   bootstrap: [AppComponent]
