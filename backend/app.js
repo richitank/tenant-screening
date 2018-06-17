@@ -94,37 +94,41 @@ app.post('/api/welcome', (req, res, next) => {
   });
   });
 
-// app.get('/api/welcome', (req, res, next) => {
-//     ScreeningRequestForm.find()
-//         .then(documents => {
-//             res.status(200).json({
-//                 message: "GETting data from DB...",
-//                 ScreeningRequestForms: documents
-//             });
-//         })
-//         .catch((error) => {
-//             console.log("Error:" + error)
-//         })
-
-
-// });
-
 app.get('/api/welcome', (req, res, next) => {
-    const posts = [
-        {
-            id: "kjb3345434",
-            title: "test1"
-        },
-        {
-            id: "sdf34f34",
-            title: "test2"
-        }
-    ];
-    res.status(200).json({
-        message: 'Posts sent successfully',
-        posts: posts
-    });
+    ScreeningRequestForm.find()
+        .then(documents => {
+            res.status(200).json({
+                ScreeningRequestForms: documents
+            });
+        })
+        .catch((error) => {
+            console.log("Error:" + error)
+        })
+
+
 });
+
+// app.get('/api/welcome', (req, res, next) => {
+//     const posts = [
+//         {
+//             id: "sdv45vdf",
+//             applicantFirstName: "Amshu",
+//             applicantLastName: "Krishna",
+//             applicantEmail: "k.amshuman@gmail.com",
+//             applicantPhoneNo: 9803392696,
+//             screeningCost: 1,
+        
+//             ownerFirstName: "bsk",
+//             ownerLastName: "chik",
+//             email: "bsk@fghffgh.com",
+//             noOfUnits: "2"
+//         }
+//     ];
+//     res.status(200).json({
+//         message: 'Posts sent successfully',
+//         posts: posts
+//     });
+// });
 
 
 

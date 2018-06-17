@@ -15,7 +15,8 @@ export class DashboardComponent implements OnInit, OnDestroy{
   constructor(public storeSignup: StoreSignup) { }
 
   ngOnInit() {
-    this.infoSentToServer = this.storeSignup.getInfo();
+    console.log("111")
+    console.log(this.storeSignup.getInfo()); //trigger http GET when ngOnInit is called
     console.log("test");
     console.log(this.infoSentToServer);
     this.infoSentToServerSub = this.storeSignup.getInfoUpdateListener()

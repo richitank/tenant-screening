@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
     //  .subscribe((responseData) => {
     //      console.log(responseData.message);         
     //  })
-    this.storeSignup.backend(infoSentToServer)
+    this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
     this.storeSignup.getInfo();
     
   }
