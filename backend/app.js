@@ -36,7 +36,8 @@ app.use((req, res, next) => {
     next();
   });
 
-app.post('/api/welcome',checkAuth, (req, res, next) => {
+app.post('/api/welcome', (req, res, next) => {
+    
     const output = `<h3>
     <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
     <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
@@ -86,10 +87,10 @@ app.post('/api/welcome',checkAuth, (req, res, next) => {
     applicantPhoneNo: req.body.applicantPhoneNo,
     screeningCost: req.body.screeningCost,
 
-    ownerFirstName: req.body.ownerFirstName,
-    ownerLastName:req.body.ownerLastName,
-    email: req.body.email,
-    noOfUnits: req.body.noOfUnits
+    // ownerFirstName: req.body.ownerFirstName,
+    // ownerLastName:req.body.ownerLastName,
+    // email: req.body.email,
+    // noOfUnits: req.body.noOfUnits
 
   });
   signupForm.save();
@@ -98,6 +99,7 @@ app.post('/api/welcome',checkAuth, (req, res, next) => {
      message: 'Email received at server succesfully' 
   });
   });
+  
 
 //Get/Fetch Data from DB
   app.get('/api/welcome', checkAuth, (req, res, next) => {
