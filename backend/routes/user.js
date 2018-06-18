@@ -1,6 +1,7 @@
 const express = require("express");
 
 const bcrypt = require("bcrypt") //external package to encrypt packages
+const jwt = require("jsonwebtoken");
 
 const router = express.Router()
 
@@ -27,5 +28,38 @@ router.post("/signup", (req, res, next) => {
                 })
         });  
 });
+
+//1. Check if email ID exists in the user model in the DB
+//2. If it exits, take user password input, encrypt it and compare it to the existing hashed password in the DB
+router.post("/signin", (req, res, next) => {
+    let fetchedUser;
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({
+                    message: "email not found in DB"
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(req.body.password, user.password);  
+        })
+
+        .then((result) => { 
+            if(!result) { //result - boolean value, if false then passwords are mismatched 
+                return res.status(401).json({
+                    message: "Passwords mismatched"
+                });
+            }
+            const token = jwt.sign({email: fetchedUser.email, userID: fetchedUser._id}, 'secret_key', {expiresIn: "1h"});
+            res.status(200).json({
+                token: token
+            })
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Auth Failed"
+            }); 
+        })
+})
 
 module.exports = router;
