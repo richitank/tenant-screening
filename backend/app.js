@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 
+const checkAuth = require('../backend/middleware/check-auth')
+
 const app = express();
 
 const userRoutes = require("./routes/user");
@@ -25,7 +27,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
       "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     );
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -34,7 +36,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.post('/api/welcome', (req, res, next) => {
+app.post('/api/welcome',checkAuth, (req, res, next) => {
     const output = `<h3>
     <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
     <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
@@ -98,7 +100,7 @@ app.post('/api/welcome', (req, res, next) => {
   });
 
 //Get/Fetch Data from DB
-  app.get('/api/welcome', (req, res, next) => {
+  app.get('/api/welcome', checkAuth, (req, res, next) => {
     ScreeningRequestForm.find()
     //ScreeningRequestForm.findOne().sort({ field: -_id }).limit(1)
         .then(documents => {

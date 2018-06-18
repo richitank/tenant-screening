@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar >
     <span>
         <a routerLink="/">OffrBox</a>
     </span>
@@ -10,11 +10,35 @@
    <span class="spacer"></span>
 
        <ul>
-           <li>
+           <li *ngIf = "!userIsAuthenticated">
                <a mat-button routerLink="/home-signin" routerLinkActive="mat-accent">Login</a>
            </li>
-           <li>
+           <li *ngIf = "!userIsAuthenticated">
                 <a mat-button routerLink="/home-signup" routerLinkActive="mat-accent">Signup</a>
+            </li >
+            <li *ngIf = "userIsAuthenticated">
+                <button mat-button>Logout</button>
             </li>
        </ul>
-</mat-toolbar>
+</mat-toolbar> -->
+
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+                <div class="navbar-header">
+                  <a routerLink="/" class="navbar-brand">
+                    <img alt="OffrBox" src="" style="max-height: 100px; max-width: 100px">
+
+                  </a>
+                </div>
+                  
+                  <ul  class="nav navbar-nav navbar-right">
+                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signin">Login</a></li>
+                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signup">Signup</a></li>
+                        <li *ngIf = "userIsAuthenticated"><a >Logout</a></li>
+                  </ul>
+                  
+                        
+                  
+                
+              </div>
+      </nav>

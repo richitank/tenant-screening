@@ -50,7 +50,7 @@ router.post("/signin", (req, res, next) => {
                     message: "Passwords mismatched"
                 });
             }
-            const token = jwt.sign({email: fetchedUser.email, userID: fetchedUser._id}, 'secret_key', {expiresIn: "1h"});
+            const token = jwt.sign({email: fetchedUser.email, userID: fetchedUser._id}, 'secret_key', {expiresIn: "1h"}); //Create a Web token using jsonwebtoken package for that pasrticular EmailID
             res.status(200).json({
                 token: token
             })

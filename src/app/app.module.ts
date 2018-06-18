@@ -8,7 +8,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { StoreSignup } from './auth/storeSignup.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { Routes, RouterModule } from '@angular/router';
@@ -20,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninAuthenticationComponent } from './authentication/signin/signin.component';
 import { SignupAuthenticationComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './authentication/authentication.service';
+import { AuthInterceptor } from './authentication/auth-interceptor';
 
 
 const appRoutes = [
@@ -60,7 +61,7 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [AuthService, StoreSignup, AuthenticationService],
+  providers: [AuthService, StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
