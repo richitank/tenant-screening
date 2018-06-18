@@ -17,14 +17,24 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SigninAuthenticationComponent } from './authentication/signin/signin.component';
+import { SignupAuthenticationComponent } from './authentication/signup/signup.component';
+import { AuthenticationService } from './authentication/authentication.service';
+
 
 const appRoutes = [
+
   {path: '', component: HomeComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'dashboard', component: DashboardComponent},
   
-  // { path: 'loggedin', component: HeaderComponent}
+  {path: 'signup', component: SignupComponent},
+  
+  {path: 'signin', component: SigninComponent},
+  
+  {path: 'dashboard', component: DashboardComponent},
+
+  {path: 'home-signin', component: SigninAuthenticationComponent},
+
+  {path: 'home-signup', component: SignupAuthenticationComponent}
  
 ];
 
@@ -37,6 +47,8 @@ const appRoutes = [
     HomeComponent,
     NavbarComponent,
     DashboardComponent,
+    SigninAuthenticationComponent,
+    SignupAuthenticationComponent
     
   ],
   imports: [
@@ -48,7 +60,7 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [AuthService, StoreSignup],
+  providers: [AuthService, StoreSignup, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

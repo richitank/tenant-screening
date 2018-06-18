@@ -15,19 +15,14 @@ export class DashboardComponent implements OnInit, OnDestroy{
   constructor(public storeSignup: StoreSignup) { }
 
   ngOnInit() {
-    console.log("111")
-    console.log(this.storeSignup.getInfo()); //trigger http GET when ngOnInit is called
-    console.log("test");
-    console.log(this.infoSentToServer);
+  
+    this.storeSignup.getInfo(); //trigger http GET when ngOnInit is called
+  
+    
     this.infoSentToServerSub = this.storeSignup.getInfoUpdateListener()
       .subscribe((signupInfo: AuthSignup[]) => {
         this.infoSentToServer = signupInfo
       });
-  }
-  onClick() {
-    for (var i=0; i<this.infoSentToServer.length; i++) {
-      console.log(this.infoSentToServer[i].applicantEmail);
-  }
   }
 
   ngOnDestroy() {

@@ -6,6 +6,8 @@ import { AuthService } from "./auth.service";
 import { Subject } from 'rxjs';
 import { AuthSignup } from "./authSignup.model";
 
+import { map } from 'rxjs/operators'
+
 @Injectable()
 export class StoreSignup{
     private infoSentToServer: AuthSignup[] = [];

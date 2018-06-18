@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://amshu:IvB34kTdk96Cgnrd@cluster0-cam55.mongodb.net/offrBox?retryWrites=true")
+const userRoutes = require("./routes/user");
+
+//MongoDB connection in node.js
+mongoose.connect("mongodb+srv://amshu:IvB34kTdk96Cgnrd@cluster0-cam55.mongodb.net/offrBox")
     .then(() => {
         console.log("MongoDB connected...");
     })
@@ -72,8 +75,8 @@ app.post('/api/welcome', (req, res, next) => {
 
       res.render('contact', {msg:'Email has been sent'});
   });
-  //const email = req.body;
 
+  //Inserting data to DB
   const signupForm = new ScreeningRequestForm({
     applicantFirstName: req.body.applicantFirstName,
     applicantLastName: req.body.applicantLastName,
@@ -94,8 +97,10 @@ app.post('/api/welcome', (req, res, next) => {
   });
   });
 
-app.get('/api/welcome', (req, res, next) => {
+//Get/Fetch Data from DB
+  app.get('/api/welcome', (req, res, next) => {
     ScreeningRequestForm.find()
+    //ScreeningRequestForm.findOne().sort({ field: -_id }).limit(1)
         .then(documents => {
             res.status(200).json({
                 ScreeningRequestForms: documents
@@ -105,32 +110,8 @@ app.get('/api/welcome', (req, res, next) => {
             console.log("Error:" + error)
         })
 
-
 });
 
-// app.get('/api/welcome', (req, res, next) => {
-//     const posts = [
-//         {
-//             id: "sdv45vdf",
-//             applicantFirstName: "Amshu",
-//             applicantLastName: "Krishna",
-//             applicantEmail: "k.amshuman@gmail.com",
-//             applicantPhoneNo: 9803392696,
-//             screeningCost: 1,
-        
-//             ownerFirstName: "bsk",
-//             ownerLastName: "chik",
-//             email: "bsk@fghffgh.com",
-//             noOfUnits: "2"
-//         }
-//     ];
-//     res.status(200).json({
-//         message: 'Posts sent successfully',
-//         posts: posts
-//     });
-// });
-
-
-
+app.use("/api/user", userRoutes)
 
 module.exports = app;   
