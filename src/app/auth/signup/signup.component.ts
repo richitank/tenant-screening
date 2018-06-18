@@ -58,9 +58,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     // const lastName = form.value.lastName;
     // const email = form.value.email;
     // const password = form.value.password;
-
-
-    console.log("fgdffgdfg=>" +applicantFirstName)
     
     //To sign up user for the first time.
     // this.authService.signupUser(email, password);
@@ -85,7 +82,7 @@ export class SignupComponent implements OnInit, OnDestroy {
        applicantLastName: applicantLastName,
        applicantEmail: applicantEmail, 
        applicantPhoneNo: applicantPhoneNo,
-       screeningCost: option, 
+       screeningCost: option,
 
        //ownerFirstName: firstName,
        //ownerLastName: lastName,
@@ -93,12 +90,20 @@ export class SignupComponent implements OnInit, OnDestroy {
        //noOfUnits: noOfUnits
 
       }
-    //  this.http.post<{message: string}>('http://localhost:3000/api/welcome', infoSentToServer)
-    //  .subscribe((responseData) => {
-    //      console.log(responseData.message);         
-    //  })
-    this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
-    this.storeSignup.getInfo();
+
+
+    if(this.userIsAuthenticated) //If not logged in, then email will not be sent.
+      this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
+    
+      this.storeSignup.getInfo();
+
+      this.authenticationService.createUser(form.value.noOfUnits, 
+        form.value.firstName, 
+        form.value.lastName,
+        form.value.applicantPhoneNo, 
+        form.value.email, 
+        form.value.password
+      )
     
   }
 

@@ -22,8 +22,9 @@ export class SignupAuthenticationComponent implements OnInit {
                                   form.value.firstName, 
                                   form.value.lastName,
                                   form.value.applicantPhoneNo, 
-                                   form.value.email, 
-                                  form.value.password)
-  }
+                                  form.value.email, 
+                                  form.value.password
+                                )
+    }
 
 }

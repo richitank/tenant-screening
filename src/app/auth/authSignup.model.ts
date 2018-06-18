@@ -6,9 +6,5 @@ export interface AuthSignup {
     applicantEmail: string
     applicantPhoneNo: number
     screeningCost: any
-   
-    // ownerFirstName: string
-    // ownerLastName: string
-    // email: string
-    // noOfUnits: number
+
 }

@@ -37,7 +37,6 @@ export class StoreSignup{
 
     getInfo() {
        
-        //return [...this.infoSentToServer];
         this.httpClient.get<{ScreeningRequestForms: AuthSignup[]}>('http://localhost:3000/api/welcome')
             .subscribe((data) => {
                 this.infoSentToServer = data.ScreeningRequestForms;
