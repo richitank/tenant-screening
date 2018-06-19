@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.userIsAuthenticated = this.authenticationService.getIsAuth();
     this.authListenerSubs = this.authenticationService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {

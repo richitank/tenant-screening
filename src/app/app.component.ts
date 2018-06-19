@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { AuthenticationService } from './authentication/authentication.service';
 
 
 @Component({
@@ -9,11 +10,10 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit{
 
+  constructor(private authenticationService: AuthenticationService) {}
+
   ngOnInit() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyAzz7jwDlLYB7LXAUAbZCynMpa7a0nkGhE",
-      authDomain: "offrbox-tenant-screening.firebaseapp.com",
-    })
+    this.authenticationService.autoAuthUser();
 
   }
 }

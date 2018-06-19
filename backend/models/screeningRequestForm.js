@@ -6,11 +6,7 @@ const postSchema = mongoose.Schema({
     applicantEmail: {type: String, required: true},
     applicantPhoneNo: {type: Number, required: true},
     screeningCost: {type: String, required: true}, 
-
-    // ownerFirstName: {type: String, required: true},
-    // ownerLastName: {type: String, required: true},
-    // email: {type: String, required: true},
-    // noOfUnits: {type: Number, required: true}
+    //creator: {type: mongoose.Schema.Types.ObjectId, ref: "User",required: true}
 });
 
 module.exports = mongoose.model('ScreeningRequestForm', postSchema);

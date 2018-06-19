@@ -36,7 +36,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.post('/api/welcome', (req, res, next) => {
+app.post('/api/welcome', checkAuth, (req, res, next) => {
     
     const output = `<h3>
     <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
@@ -86,13 +86,10 @@ app.post('/api/welcome', (req, res, next) => {
     applicantEmail: req.body.applicantEmail,
     applicantPhoneNo: req.body.applicantPhoneNo,
     screeningCost: req.body.screeningCost,
-
-    // ownerFirstName: req.body.ownerFirstName,
-    // ownerLastName:req.body.ownerLastName,
-    // email: req.body.email,
-    // noOfUnits: req.body.noOfUnits
-
+    //creator: req.u
   });
+  console.log(req.userData)
+return res.status(200).json({})
   signupForm.save();
 
   res.status(201).json({
@@ -104,7 +101,6 @@ app.post('/api/welcome', (req, res, next) => {
 //Get/Fetch Data from DB
   app.get('/api/welcome', checkAuth, (req, res, next) => {
     ScreeningRequestForm.find()
-    //ScreeningRequestForm.findOne().sort({ field: -_id }).limit(1)
         .then(documents => {
             res.status(200).json({
                 ScreeningRequestForms: documents

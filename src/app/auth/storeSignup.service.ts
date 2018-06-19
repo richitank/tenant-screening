@@ -18,10 +18,7 @@ export class StoreSignup{
     
     storeInfo (form: any[]) {
         //const token = this.authService.getToken()
-        const token = "F6v9gBitn3vaAThKVImTwzKJ6hR4mUXOtcrFq3wj";
-
-        //console.log(token);
-           
+        const token = "F6v9gBitn3vaAThKVImTwzKJ6hR4mUXOtcrFq3wj";           
         return this.http.post('https://offrbox-tenant-screening.firebaseio.com/NewSignUpInfo.json?auth=' + token, form);
 
     }
@@ -37,9 +34,22 @@ export class StoreSignup{
 
     getInfo() {
        
-        this.httpClient.get<{ScreeningRequestForms: AuthSignup[]}>('http://localhost:3000/api/welcome')
-            .subscribe((data) => {
-                this.infoSentToServer = data.ScreeningRequestForms;
+        this.httpClient.get<{ScreeningRequestForms: any}>('http://localhost:3000/api/welcome')
+        // .pipe(map((formData) => {
+        //     return formData.ScreeningRequestForms.map(form => {
+        //        return {
+        //         id: form._id,
+        //         applicantFirstName: form.applicantFirstName,
+        //         applicantLastName: form.applicantLastName,
+        //         applicantEmail: form.applicantEmail,
+        //         applicantPhoneNo: form.applicantPhoneNo,
+        //         screeningCost: form.screeningCost
+        //        } 
+        //     });
+        // }))
+            .subscribe((transformedData) => {
+                console.log(transformedData);
+                this.infoSentToServer = transformedData.ScreeningRequestForms;
                 this.infoUpdated.next([...this.infoSentToServer])
 
             })

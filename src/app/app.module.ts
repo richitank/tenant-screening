@@ -21,17 +21,18 @@ import { SigninAuthenticationComponent } from './authentication/signin/signin.co
 import { SignupAuthenticationComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthInterceptor } from './authentication/auth-interceptor';
+import { AuthGuard } from './authentication/auth.guard';
 
 
 const appRoutes = [
 
   {path: '', component: HomeComponent},
   
-  {path: 'signup', component: SignupComponent},
+  {path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
   
   {path: 'signin', component: SigninComponent},
   
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
 
   {path: 'home-signin', component: SigninAuthenticationComponent},
 
@@ -61,7 +62,7 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [AuthService, StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [AuthService, StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

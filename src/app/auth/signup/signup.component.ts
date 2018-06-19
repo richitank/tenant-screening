@@ -97,13 +97,13 @@ export class SignupComponent implements OnInit, OnDestroy {
     
       this.storeSignup.getInfo();
 
-      this.authenticationService.createUser(form.value.noOfUnits, 
-        form.value.firstName, 
-        form.value.lastName,
-        form.value.applicantPhoneNo, 
-        form.value.email, 
-        form.value.password
-      )
+      // this.authenticationService.createUser(form.value.noOfUnits, 
+      //   form.value.firstName, 
+      //   form.value.lastName,
+      //   form.value.applicantPhoneNo, 
+      //   form.value.email, 
+      //   form.value.password
+      // )
     
   }
 
