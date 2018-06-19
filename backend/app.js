@@ -36,7 +36,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.post('/api/welcome', checkAuth, (req, res, next) => {
+app.post('/api/welcome', (req, res, next) => {
     
     const output = `<h3>
     <p>Hi, <br> This is a mail for you from the owner. There is a request for you to get a background screening done.  <br>
@@ -79,6 +79,7 @@ app.post('/api/welcome', checkAuth, (req, res, next) => {
       res.render('contact', {msg:'Email has been sent'});
   });
 
+
   //Inserting data to DB
   const signupForm = new ScreeningRequestForm({
     applicantFirstName: req.body.applicantFirstName,
@@ -88,8 +89,8 @@ app.post('/api/welcome', checkAuth, (req, res, next) => {
     screeningCost: req.body.screeningCost,
     //creator: req.u
   });
-  console.log(req.userData)
-return res.status(200).json({})
+//console.log(req.userData)
+//return res.status(200).json({})
   signupForm.save();
 
   res.status(201).json({

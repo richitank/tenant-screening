@@ -1,7 +1,29 @@
-<p>
-  dashboard works!
-</p>
-<button routerLink="/signup">signup</button>
-<div *ngFor="let info of infoSentToServer">
-  <p>{{info.applicantFirstName}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <app-side-nav></app-side-nav>
+        </div>
+        <div class="col-md-9">
+            <!-- <button routerLink="/signup">signup</button> -->
+            
+                <h3>Screening Reports 
+                  <span style="float: right"><button class="btn btn-primary" routerLink="/signup">Request Reports</button>
+                  </span>
+                </h3>
+
+            <div *ngFor="let info of infoSentToServer">
+              <div class="bs-callout bs-callout-success">
+                <h3>{{info.applicantFirstName}} {{info.applicantLastName}}</h3>
+                <h4><a target="_top" href="mailto:k.amshuman@gmail.com">{{info.applicantEmail}}</a></h4>
+                <br>
+                <h4>Credit Report/ Background Check <button disabled>REQUESTED</button> </h4>
+              </div>
+            </div>
+            
+            <!-- <app-screening></app-screening> -->
+        </div>
+            
+    </div>
+        
 </div>
+

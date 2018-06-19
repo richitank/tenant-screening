@@ -28,11 +28,8 @@
                   <ul  class="nav navbar-nav navbar-right">
                         <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signin">Login</a></li>
                         <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signup">Signup</a></li>
-                        <li *ngIf = "userIsAuthenticated"><button (click)="onLogout()" >Logout</button> </li>
+                        <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onLogout()" >Logout</button> </li>
                   </ul>
-                  
-                        
-                  
-                
+                    
               </div>
       </nav>

@@ -22,6 +22,8 @@ import { SignupAuthenticationComponent } from './authentication/signup/signup.co
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
+import { SideNavComponent } from './dashboard/side-nav/side-nav.component';
+import { ScreeningComponent } from './dashboard/screening/screening.component';
 
 
 const appRoutes = [
@@ -36,7 +38,9 @@ const appRoutes = [
 
   {path: 'home-signin', component: SigninAuthenticationComponent},
 
-  {path: 'home-signup', component: SignupAuthenticationComponent}
+  {path: 'home-signup', component: SignupAuthenticationComponent},
+
+  {path: 'dashboard/screening', component: ScreeningComponent}
  
 ];
 
@@ -50,7 +54,9 @@ const appRoutes = [
     NavbarComponent,
     DashboardComponent,
     SigninAuthenticationComponent,
-    SignupAuthenticationComponent
+    SignupAuthenticationComponent,
+    SideNavComponent,
+    ScreeningComponent
     
   ],
   imports: [
