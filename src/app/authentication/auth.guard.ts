@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate{
              this.router.navigate(["/home-signin"])
         }
         return isAuth;
+        //return true
     }
 
 }

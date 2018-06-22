@@ -96,8 +96,10 @@
 
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Send Requests</button>
     </form>
+    <br>
+    <hr>
     <div *ngIf="userIsAuthenticated">
-        <a routerLink="/dashboard">dashboard</a>
+        <a routerLink="/dashboard">Go back to DashBoard</a>
     </div>
     
   </div>

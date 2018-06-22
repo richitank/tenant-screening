@@ -23,14 +23,15 @@ export class StoreSignup{
 
     }
     sendSignupInfoToBackend(infoSentToServer) {
+        console.log(infoSentToServer)
         this.infoSentToServer.push(infoSentToServer);
         console.log(this.infoSentToServer);
         this.infoUpdated.next([...this.infoSentToServer]);
-        this.http.post('http://localhost:3000/api/welcome', infoSentToServer)
+        this.http.post('http://localhost:3000/api/screeningInfo', infoSentToServer)
         .subscribe((responseData) => {
             console.log(responseData);         
         })
-    }
+    }   
 
     getInfo() {
        

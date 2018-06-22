@@ -38,13 +38,12 @@ export class AuthenticationService {
             .subscribe((response) => {
                 console.log(response)
             })
+            this.router.navigate(['/home-signin'])
+
     }
 
     login(email: string, password: string) {
-        //const authData: AuthData = {
-            // email: email,
-            // password: password
-        //};
+      
         this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/signin", /*authData*/ {email: email,
         password: password})
         .subscribe((response) => {
@@ -58,7 +57,7 @@ export class AuthenticationService {
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 console.log(expirationDate);
-                this.saveAuthData(token, expirationDate)
+                this.saveAuthData(token, expirationDate);
                 this.router.navigate(['/dashboard'])
 
             }

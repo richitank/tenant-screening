@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   
 
   onSignup(form: NgForm) {
-    this.authService.isAuthenticated()
+    //this.authService.isAuthenticated()
     console.log(form.value.email);
     
     //tenant details
@@ -92,10 +92,13 @@ export class SignupComponent implements OnInit, OnDestroy {
       }
 
 
-    if(this.userIsAuthenticated) //If not logged in, then email will not be sent.
+    //if(this.userIsAuthenticated) {
+      console.log("userIsAuthenticated: " + this.userIsAuthenticated)//If not logged in, then email will not be sent.
       this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
+
+    //}
     
-      this.storeSignup.getInfo();
+      //this.storeSignup.getInfo();
 
       // this.authenticationService.createUser(form.value.noOfUnits, 
       //   form.value.firstName, 

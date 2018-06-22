@@ -45,16 +45,24 @@ router.post("/signin", (req, res, next) => {
                 });
             }
             fetchedUser = user;
-            return bcrypt.compare(req.body.password, user.password);  
+            return bcrypt.compare(req.body.password, user.password);        
         })
 
         .then((result) => { 
-            if(!result) { //result - boolean value, if false then passwords are mismatched 
+            if(!result) { //result is a boolean value. If value=false => passwords are mismatched 
                 return res.status(401).json({
                     message: "Passwords mismatched"
                 });
             }
-            const token = jwt.sign({email: fetchedUser.email, userID: fetchedUser._id}, 'secret_key', {expiresIn: "1h"}); //Create a Web token using jsonwebtoken package for that pasrticular EmailID
+            console.log("id:" + fetchedUser._id)
+
+            const token = jwt.sign(
+                {email: fetchedUser.email, userID: fetchedUser._id}, 
+                'secret_key', 
+                {expiresIn: "1h"}
+                ); 
+                
+                console.log("token: \n" + token + "\n\n\n");
             res.status(200).json({
                 token: token,
                 expiresIn: 3600
