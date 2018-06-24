@@ -9,6 +9,9 @@ const app = express();
 
 const userRoutes = require("./routes/user");
 
+const paymentRoutes = require("./payment/paypal");
+
+
 //MongoDB connection in node.js
 mongoose.connect("mongodb+srv://amshu:IvB34kTdk96Cgnrd@cluster0-cam55.mongodb.net/offrBox")
     .then(() => {
@@ -36,7 +39,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.post('/api/screeningInfo', checkAuth, (req, res, next) => {
+app.post('/api/screeningInfo', (req, res, next) => {
     
     const output = `<h3>
     <p>Hi, <br> There is a request for you to get a background screening done.  <br>
@@ -113,6 +116,7 @@ app.post('/api/screeningInfo', checkAuth, (req, res, next) => {
 
 });
 
-app.use("/api/user", userRoutes)
+app.use("/api/user", userRoutes);
+app.use("/api/payment", paymentRoutes);
 
 module.exports = app;   

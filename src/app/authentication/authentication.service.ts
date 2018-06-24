@@ -34,17 +34,18 @@ export class AuthenticationService {
             email: email,
             password: password
         };
+        console.log(authData);
         this.http.post("http://localhost:3000/api/user/signup", authData)
             .subscribe((response) => {
                 console.log(response)
             })
-            this.router.navigate(['/home-signin'])
+            //this.router.navigate(['/home-signin'])
 
     }
 
     login(email: string, password: string) {
       
-        this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/signin", /*authData*/ {email: email,
+        this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/signin", /*authData,*/ {email: email,
         password: password})
         .subscribe((response) => {
             const token = response.token
@@ -89,6 +90,7 @@ export class AuthenticationService {
 
     }
 
+    
     private setAuthTimer(duration: number) { 
         console.log("Setting timer: " + duration);
         this.tokenTimer = setTimeout(() => {

@@ -6,6 +6,7 @@ const postSchema = mongoose.Schema({
     applicantEmail: {type: String, required: true},
     applicantPhoneNo: {type: Number },
     screeningCost: {type: String, required: true}, 
+   // userId:{type:String}
     //creator: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}
 });
 

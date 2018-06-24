@@ -18,6 +18,7 @@ export class SignupAuthenticationComponent implements OnInit {
     if(form.invalid) {
      return
    }
+   console.log(form.value.email)
   this.authentication.createUser(form.value.noOfUnits, 
                                   form.value.firstName, 
                                   form.value.lastName,
