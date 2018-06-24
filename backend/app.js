@@ -40,7 +40,15 @@ app.use((req, res, next) => {
   });
 
 app.post('/api/screeningInfo', (req, res, next) => {
-    
+
+    if(req.body.screeningCost == 1) {
+        req.body.screeningCost = 39.99
+        console.log("loop1")
+    }
+    else if(req.body.screeningCost == 2 || req.body.screeningCost == 3) {
+        req.body.screeningCost = 24.99
+        console.log(req.body.screeningCost) }
+
     const output = `<h3>
     <p>Hi, <br> There is a request for you to get a background screening done.  <br>
     <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
@@ -102,8 +110,21 @@ app.post('/api/screeningInfo', (req, res, next) => {
   });
   
 
-//Get/Fetch Data from DB
+//Get/Fetch Data from DB for the Owner
   app.get('/api/welcome', checkAuth, (req, res, next) => {
+    ScreeningRequestForm.find()
+        .then(documents => {
+            res.status(200).json({
+                ScreeningRequestForms: documents
+            });
+        })
+        .catch((error) => {
+            console.log("Error:" + error)
+        })
+
+});
+
+app.get('/api/getInfo', (req, res, next) => {
     ScreeningRequestForm.find()
         .then(documents => {
             res.status(200).json({
