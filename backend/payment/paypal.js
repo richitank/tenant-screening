@@ -1,6 +1,7 @@
 const express = require("express");
 
-const ejs = require('ejs');
+const bodyParser = require("body-parser")
+
 const paypal = require('paypal-rest-sdk');
 
 const payment = express.Router();
@@ -11,9 +12,12 @@ paypal.configure({
     'client_secret': 'EFciY8Dhj_HNYovOOvnvId6H_CrOCwEbfm6LK9EM7npNVEooOnAIFBRtJXnzM8R3HPh758iFuZUwl4O_'
   });
 
-  //payment.set('view engine', 'ejs');
-
-  payment.get('/api/payment/paypal', (req, res) => res.render("hi"))
+payment.post('/api/purchase/paypal', (req, res, next)=> {
+  res.status(201).json({
+    message: 'Email received at server succesfully' 
+ });
+  console.log("test")
+});
 
   module.exports = payment;
 

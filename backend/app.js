@@ -9,7 +9,7 @@ const app = express();
 
 const userRoutes = require("./routes/user");
 
-const paymentRoutes = require("./payment/paypal");
+//const paymentRoutes = require("./payment/paypal");
 
 
 //MongoDB connection in node.js
@@ -43,7 +43,6 @@ app.post('/api/screeningInfo', (req, res, next) => {
 
     if(req.body.screeningCost == 1) {
         req.body.screeningCost = 39.99
-        console.log("loop1")
     }
     else if(req.body.screeningCost == 2 || req.body.screeningCost == 3) {
         req.body.screeningCost = 24.99
@@ -124,6 +123,8 @@ app.post('/api/screeningInfo', (req, res, next) => {
 
 });
 
+
+//Get/Fetch Data from DB for the TenantView
 app.get('/api/getInfo', (req, res, next) => {
     ScreeningRequestForm.find()
         .then(documents => {
@@ -137,7 +138,22 @@ app.get('/api/getInfo', (req, res, next) => {
 
 });
 
+// app.get("/api/payment/paypal", (req, res, next)=> {
+//     //const post = req.body;
+//     //console.log(post);
+//     res.status(201).json({
+//         message: "testing"
+//     });
+// });
+
+app.post("/api/payment/paypal", (req, res, next)=> { 
+    console.log(req.body)
+    res.status(201).json({
+        message: "testtin post"
+    })
+});
+
 app.use("/api/user", userRoutes);
-app.use("/api/payment", paymentRoutes);
+//app.use("/api/payment/paypal", paymentRoutes);
 
 module.exports = app;   
