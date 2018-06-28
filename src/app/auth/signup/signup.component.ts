@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
 import { StoreSignup } from '../storeSignup.service';
 import { HttpClient } from "@angular/common/http";
 import { AuthSignup } from '../authSignup.model';
@@ -20,7 +19,7 @@ export class SignupComponent implements OnInit, OnDestroy {
      private authStatusSub :Subscription;
   
 
-  constructor(private authService: AuthService, //Firebase authentication
+  constructor( 
               private storeSignup: StoreSignup, 
               private http: HttpClient, 
               private authenticationService :AuthenticationService) //Node.js authentication
@@ -42,7 +41,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   
 
   onSignup(form: NgForm) {
-    //this.authService.isAuthenticated()
     console.log(form.value.email);
     
     //tenant details
@@ -52,43 +50,12 @@ export class SignupComponent implements OnInit, OnDestroy {
     const applicantEmail = form.value.applicantEmail;
     const applicantPhoneNo = form.value.applicantPhoneNo;
 
-    //Landlord/owner details
-    // const noOfUnits = form.value.noOfUnits;
-    // const firstName = form.value.firstName;
-    // const lastName = form.value.lastName;
-    // const email = form.value.email;
-    // const password = form.value.password;
-    
-    //To sign up user for the first time.
-    // this.authService.signupUser(email, password);
-
-    // this.info.push({
-    //   noOfUnits: noOfUnits ,
-    //   firstName: firstName,
-    //   lastName: lastName,      
-    //   email: email
-    // });
-    
-    
-    this.storeSignup.storeInfo(this.info)
-      .subscribe(
-          (response) => console.log(response),
-          (error) => console.log(error)
-      );
-
-
      const infoSentToServer = {
        applicantFirstName:applicantFirstName, 
        applicantLastName: applicantLastName,
        applicantEmail: applicantEmail, 
        applicantPhoneNo: applicantPhoneNo,
        screeningCost: option,
-
-       //ownerFirstName: firstName,
-       //ownerLastName: lastName,
-       //email: email,
-       //noOfUnits: noOfUnits
-
       }
 
 
@@ -109,9 +76,5 @@ export class SignupComponent implements OnInit, OnDestroy {
       // )
     
   }
-
-      addAnotherApplicant(){
-      console.log("addAnotherApplicant testing");
-    }
 
 }

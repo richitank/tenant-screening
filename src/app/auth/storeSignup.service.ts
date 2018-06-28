@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { HttpClient } from "@angular/common/http"
 
-import { AuthService } from "./auth.service";
 import { Subject } from 'rxjs';
 import { AuthSignup } from "./authSignup.model";
 
@@ -13,15 +12,8 @@ export class StoreSignup{
     private infoSentToServer: AuthSignup[] = [];
     private infoUpdated = new Subject<AuthSignup[]>()
     
-    constructor(private http: Http, private authService: AuthService, private httpClient: HttpClient) {}
+    constructor(private http: Http, private httpClient: HttpClient) {}
     
-    
-    storeInfo (form: any[]) {
-        //const token = this.authService.getToken()
-        const token = "F6v9gBitn3vaAThKVImTwzKJ6hR4mUXOtcrFq3wj";           
-        return this.http.post('https://offrbox-tenant-screening.firebaseio.com/NewSignUpInfo.json?auth=' + token, form);
-
-    }
     sendSignupInfoToBackend(infoSentToServer) {
         console.log(infoSentToServer)
         this.infoSentToServer.push(infoSentToServer);
@@ -33,8 +25,7 @@ export class StoreSignup{
         })
     }   
 
-    getInfo() {
-       
+    getInfo() {       
         this.httpClient.get<{ScreeningRequestForms: any}>('http://localhost:3000/api/screeningInfo/getInfo')
         // .pipe(map((formData) => {
         //     return formData.ScreeningRequestForms.map(form => {

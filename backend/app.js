@@ -1,16 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
-
-const checkAuth = require('../backend/middleware/check-auth')
 
 const app = express();
 
 const screeningRoutes = require("./routes/screeningRequestForms")
 const userRoutes = require("./routes/user");
 const tenantViewRoutes = require("./routes/tenantView")
-//const paymentRoutes = require("./payment/paypal");
+const customerSupportRoutes = require("./routes/customerSupport/customerSupport")
 
 
 //MongoDB connection in node.js
@@ -43,6 +40,6 @@ app.use((req, res, next) => {
 app.use("/api/screeningInfo", screeningRoutes)
 app.use("/api/user", userRoutes);
 app.use("/api/getInfo", tenantViewRoutes)
-//app.use("/api/payment/paypal", paymentRoutes);
+app.use("/api/customerSupport/feedback", customerSupportRoutes)
 
 module.exports = app;   

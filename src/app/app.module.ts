@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { AuthService } from './auth/auth.service';
 import { StoreSignup } from './auth/storeSignup.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -68,7 +67,7 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [AuthService, StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard], 
+  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
