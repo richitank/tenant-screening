@@ -7,11 +7,11 @@ const nodemailer = require('nodemailer');
 router.post("", (req, res, next) => {
     const output = `<h3>
     <p>Customer Feedback Details: </h3> 
-    <p>Customer Name: ${req.body.customerName} </p>  
-    <p>Customer Email: ${req.body.email}</p>
-    <p>Subject: ${req.body.subject} </p>
-    <p>Comment: ${req.body.comment} </p>
-    <p>Image Uploaded: ${req.body.pic} </p>
+    <h4>Customer Name: ${req.body.customerName} </h4>  
+    <h4>Customer Email: ${req.body.email}</h4>
+    <h4>Subject: ${req.body.subject} </h4>
+    <h4>Comment: ${req.body.comment} </h4>
+    <h4>Image Uploaded: ${req.body.pic} </h4>
     `;
 
     // create reusable transporter object using the default SMTP transport
