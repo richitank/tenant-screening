@@ -35,7 +35,7 @@ export class StoreSignup{
 
     getInfo() {
        
-        this.httpClient.get<{ScreeningRequestForms: any}>('http://localhost:3000/api/welcome')
+        this.httpClient.get<{ScreeningRequestForms: any}>('http://localhost:3000/api/screeningInfo/getInfo')
         // .pipe(map((formData) => {
         //     return formData.ScreeningRequestForms.map(form => {
         //        return {

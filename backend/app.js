@@ -9,9 +9,7 @@ const app = express();
 
 const screeningRoutes = require("./routes/screeningRequestForms")
 const userRoutes = require("./routes/user");
-
-
-
+const tenantViewRoutes = require("./routes/tenantView")
 //const paymentRoutes = require("./payment/paypal");
 
 
@@ -24,7 +22,6 @@ mongoose.connect("mongodb+srv://amshu:IvB34kTdk96Cgnrd@cluster0-cam55.mongodb.ne
         console.log('Connection failed' + error);
     })
 
-const ScreeningRequestForm = require("./models/screeningRequestForm");
 
 app.use(bodyParser.json());
 
@@ -42,30 +39,10 @@ app.use((req, res, next) => {
     next();
   });
 
-//Get/Fetch Data from DB for the TenantView. Called from 
-app.get('/api/getInfo', (req, res, next) => {
-    ScreeningRequestForm.find()
-        .then(documents => {
-            res.status(200).json({
-                ScreeningRequestForms: documents
-            });
-        })
-        .catch((error) => {
-            console.log("Error:" + error)
-        })
-
-});
-
-
-app.post("/api/payment/paypal", (req, res, next)=> { 
-    console.log(req.body)
-    res.status(201).json({
-        message: "testtin post"
-    })
-});
 
 app.use("/api/screeningInfo", screeningRoutes)
 app.use("/api/user", userRoutes);
+app.use("/api/getInfo", tenantViewRoutes)
 //app.use("/api/payment/paypal", paymentRoutes);
 
 module.exports = app;   

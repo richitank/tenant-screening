@@ -6,6 +6,8 @@ const nodemailer = require('nodemailer');
 
 const checkAuth = require("../middleware/check-auth")
 
+const ScreeningRequestForm = require('../models/screeningRequestForm')
+
 
 router.post("", (req, res, next) => {
 
@@ -78,7 +80,7 @@ router.post("", (req, res, next) => {
   
 
 //Get/Fetch Data from DB for the Owner
-router.get("", checkAuth, (req, res, next) => {
+router.get("/getInfo", checkAuth, (req, res, next) => {
     ScreeningRequestForm.find()
         .then(documents => {
             res.status(200).json({
