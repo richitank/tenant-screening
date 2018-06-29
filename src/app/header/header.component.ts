@@ -11,5 +11,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  onSignup(f) {
+    
+  }
 
 }

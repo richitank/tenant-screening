@@ -5,13 +5,13 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 
 router.post("", (req, res, next) => {
-    const output = `<h3>
-    <p>Customer Feedback Details: </h3> 
-    <h4>Customer Name: ${req.body.customerName} </h4>  
-    <h4>Customer Email: ${req.body.email}</h4>
-    <h4>Subject: ${req.body.subject} </h4>
-    <h4>Comment: ${req.body.comment} </h4>
-    <h4>Image Uploaded: ${req.body.pic} </h4>
+    const output = `<h2>
+    <p>Customer Feedback Details: </h2> 
+    <h3>Customer Name:</h3> <p> ${req.body.customerName}  </p> 
+    <h3>Customer Email:</h3> <p>${req.body.email}</p>
+    <h3>Subject:</h3> <p>${req.body.subject}  </p>
+    <h3>Comment: </h3> <p>${req.body.comment}  </p>
+    <h3>Image Uploaded:</h3> <p>*** This is diabled right now. Image uploaded will not be displayed here. ***  </p>
     `;
 
     // create reusable transporter object using the default SMTP transport

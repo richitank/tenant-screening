@@ -18,12 +18,26 @@ router.post("", (req, res, next) => {
         req.body.screeningCost = 24.99
         console.log(req.body.screeningCost) }
 
-    const output = `<h3>
-    <p>Hi, <br> There is a request for you to get a background screening done.  <br>
-    <br> You'll be paying ${req.body.screeningCost} for the screening.<br>
+    const output = `<h3> 
+    <p>Hi ${req.body.applicantFirstName}, </h3>, 
+    <br> 
+    <p> The owner of a property has requested a security screening from you. If you're interested with the property, you'll have to complete the security screening and pay.</p> 
+    <p> You'll be charged ${req.body.screeningCost} for the screening.</p>
+    <br>
     <p>Please go to the following link to proceed: <a href="http://localhost:4201">Get Started</a></p>
     <br>
-    <p>Have questions? Please contact <a href="http://localhost:4202"> Customer Support</a></p>`;
+    <p>Have questions? Please contact <a href="http://localhost:4202"> Customer Support</a></p>
+    <br>
+    <br>
+    <p>Cheers</p>
+    <p>OffrBox, Inc</p>
+    <p>6000 Fairviw Rd,</p>
+    <br>
+    <p>Charlotte, NC 28210</p>
+    <br>
+    <br>
+    <p>Please do reply to this mail. This inbox is not maintained. Click on Customer Support to reach out with your queries.<p>
+    `;
 
     // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({

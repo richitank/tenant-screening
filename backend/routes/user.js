@@ -1,6 +1,6 @@
 const express = require("express");
 
-const bcrypt = require("bcrypt") //external package to encrypt packages
+const bcrypt = require("bcryptjs") //external package to encrypt packages
 const jwt = require("jsonwebtoken");
 
 const router = express.Router()
@@ -58,7 +58,7 @@ router.post("/signin", (req, res, next) => {
 
             const token = jwt.sign(
                 {email: fetchedUser.email, userID: fetchedUser._id}, 
-                'secret_key', 
+                process.env.JWT_KEY, 
                 {expiresIn: "1h"}
                 ); 
                 

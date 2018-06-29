@@ -11,7 +11,7 @@ const customerSupportRoutes = require("./routes/customerSupport/customerSupport"
 
 
 //MongoDB connection in node.js
-mongoose.connect("mongodb+srv://amshu:IvB34kTdk96Cgnrd@cluster0-cam55.mongodb.net/offrBox")
+mongoose.connect("mongodb+srv://amshu:" + process.env.MONGO_ATLAS_PW + "@cluster0-cam55.mongodb.net/offrBox")
     .then(() => {
         console.log("MongoDB connected...");
     })
