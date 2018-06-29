@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control" required email>
+        <input type="email" id="email" name="email" ngModel class="form-control" required email placeholder="Enter your OffrBox Mail">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -39,7 +39,8 @@
           required
           >
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign Up</button>
+      <button class="btn btn-success btn-block" type="submit" [disabled]="!f.valid">Sign Up</button>
+      <!-- <p>Enter your OffrBox Mail</p> -->
       <!-- <button class="btn btn-primary" type="submit" [disabled]="!f.valid" routerLink="/loggedin">Sign In</button> -->
     </form>
   </div>

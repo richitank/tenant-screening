@@ -42,6 +42,7 @@ export class AuthenticationService {
         this.http.post(BACKEND_URL + "/signup", authData)
             .subscribe((response) => {
                 console.log(response)
+                this.router.navigate(['/home-signin'])
             })
             //this.router.navigate(['/home-signin'])
 

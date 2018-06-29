@@ -47,14 +47,18 @@
               <input type="tel" minlength="9" maxlength="13" name="applicantPhoneNo" ngModel class="form-control">
             </div>
             <br>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" (click)="onClick()">
               Add Another Applicant
             </button>
+            <p>This button is disabled.</p>
           </div> 
-          <hr>
+          <hr> 
+          <br>
+          <br>
+          <br>
           
     
-        <h2>Create Your Free Account</h2>
+        
 
 
 <!-- <div *ngIf="userIsAuthenticated">
@@ -100,12 +104,12 @@
 
 
 
-      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Send Requests</button>
+      <button class="btn btn-success btn-block" type="submit" [disabled]="!f.valid" >Send Requests</button>
+      <p>After sending requests check tenant's inbox to proceed.</p>
     </form>
     <br>
-    <hr>
     <div *ngIf="userIsAuthenticated">
-        <a routerLink="/dashboard">Go back to DashBoard</a>
+        <button class="btn btn-success btn-block" routerLink="/dashboard">Go back to DashBoard</button>
     </div>
     
   </div>
