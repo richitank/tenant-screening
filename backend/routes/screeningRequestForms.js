@@ -24,9 +24,9 @@ router.post("", (req, res, next) => {
     <p> The owner of a property has requested a security screening from you. If you're interested with the property, you'll have to complete the security screening and pay.</p> 
     <p> You'll be charged ${req.body.screeningCost} for the screening.</p>
     <br>
-    <p>Please go to the following link to proceed: <a href="http://localhost:4201">Get Started</a></p>
+    <p>Please go to the following link to proceed: <a href="http://offrbox-tenant-view.s3-website.us-east-2.amazonaws.com/">Get Started</a></p>
     <br>
-    <p>Have questions? Please contact <a href="http://localhost:4202"> Customer Support</a></p>
+    <p>Have questions? Please contact <a href="http://offrbox-tenantscreening.s3-website.us-east-2.amazonaws.com/"> Customer Support</a></p>
     <br>
     <br>
     <p>Cheers</p>
