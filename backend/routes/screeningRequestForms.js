@@ -9,7 +9,7 @@ const checkAuth = require("../middleware/check-auth")
 const ScreeningRequestForm = require('../models/screeningRequestForm')
 
 
-router.post("", (req, res, next) => {
+router.post("", checkAuth, (req, res, next) => {
 
     if(req.body.screeningCost == 1) {
         req.body.screeningCost = 39.99

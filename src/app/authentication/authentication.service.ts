@@ -53,18 +53,19 @@ export class AuthenticationService {
         this.http.post<{token: string, expiresIn: number}>(BACKEND_URL + "/signin", /*authData,*/ {email: email,
         password: password})
         .subscribe((response) => {
+            console.log(response)
             const token = response.token
             this.token = token;
             if(token) {
                 const expiresInDuration = response.expiresIn; // Sending Token expiration time to Front-End
                 this.setAuthTimer(expiresInDuration);
-                this.isAuthenticated = true
+                this.isAuthenticated                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     = true
                 this.authStatusListener.next(true); 
-                const now = new Date();
+                const now = new Date();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 console.log(expirationDate);
                 this.saveAuthData(token, expirationDate);
-                this.router.navigate(['/dashboard'])
+                //this.router.navigate(['/dashboard'])
 
             }
             // if login is success, then Display logout buton and Remove Login/Signup button
