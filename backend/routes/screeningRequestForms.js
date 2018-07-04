@@ -81,13 +81,12 @@ router.post("", checkAuth, (req, res, next) => {
     applicantEmail: req.body.applicantEmail,
     applicantPhoneNo: req.body.applicantPhoneNo,
     screeningCost: req.body.screeningCost,
-    //creator: req.u
+    creator: req.userData.userId
   });
-//console.log(req.userData)
-//return res.status(200).json({})
   signupForm.save();
 
   res.status(201).json({
+
      message: 'Email received at server succesfully' 
   });
   });
@@ -95,7 +94,7 @@ router.post("", checkAuth, (req, res, next) => {
 
 //Get/Fetch Data from DB for the Owner
 router.get("/getInfo", checkAuth, (req, res, next) => {
-    ScreeningRequestForm.find()
+    ScreeningRequestForm.find({creator: req.userData.userId})
         .then(documents => {
             res.status(200).json({
                 ScreeningRequestForms: documents

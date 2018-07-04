@@ -65,7 +65,7 @@ export class AuthenticationService {
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 console.log(expirationDate);
                 this.saveAuthData(token, expirationDate);
-                //this.router.navigate(['/dashboard'])
+                this.router.navigate(['/dashboard'])
 
             }
             // if login is success, then Display logout buton and Remove Login/Signup button

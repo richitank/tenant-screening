@@ -54,15 +54,12 @@ router.post("/signin", (req, res, next) => {
                     message: "Passwords mismatched"
                 });
             }
-            console.log("id:" + fetchedUser._id)
-
+            
             const token = jwt.sign(
                 {email: fetchedUser.email, userID: fetchedUser._id}, 
                 process.env.JWT_KEY, 
                 {expiresIn: "1h"}
                 ); 
-                
-                console.log("token: \n" + token + "\n\n\n");
             res.status(200).json({
                 token: token,
                 expiresIn: 3600

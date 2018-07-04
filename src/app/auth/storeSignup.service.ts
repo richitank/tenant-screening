@@ -37,7 +37,8 @@ export class StoreSignup{
         //         applicantLastName: form.applicantLastName,
         //         applicantEmail: form.applicantEmail,
         //         applicantPhoneNo: form.applicantPhoneNo,
-        //         screeningCost: form.screeningCost
+        //         screeningCost: form.screeningCost,
+        //         creator: form.creator
         //        } 
         //     });
         // }))
