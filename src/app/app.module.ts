@@ -27,7 +27,7 @@ const appRoutes = [
 
   {path: '', component: HomeComponent},
   
-  {path: 'signup', component: ScreeningRequestComponent, canActivate: [AuthGuard]},
+  {path: 'screening-request', component: ScreeningRequestComponent, canActivate: [AuthGuard]},
   
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
 
