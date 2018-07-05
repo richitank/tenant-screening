@@ -2,18 +2,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { StoreSignup } from '../storeSignup.service';
 import { HttpClient } from "@angular/common/http";
-import { AuthSignup } from '../authSignup.model';
 import { AuthenticationService } from '../../authentication/authentication.service';
 import { Subscription } from 'rxjs';
 
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  templateUrl: './screeningRequest.component.html',
+  styleUrls: ['./screeningRequest.component.css']
 })
-export class SignupComponent implements OnInit, OnDestroy {
-    info = []; //Stores Landlord info which is pushed to the Firebase database
+export class ScreeningRequestComponent implements OnInit, OnDestroy {
     
      userIsAuthenticated = false;    
      private authStatusSub :Subscription;

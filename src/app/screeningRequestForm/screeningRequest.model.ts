@@ -1,4 +1,4 @@
-export interface AuthSignup {
+export interface ScreeningRequest {
 
     _id: string,
     applicantFirstName: string;

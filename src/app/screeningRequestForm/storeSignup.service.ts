@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
 
 import { Subject } from 'rxjs';
-import { AuthSignup } from "./authSignup.model";
+import { ScreeningRequest } from "./screeningRequest.model";
 import { environment } from "../../environments/environment"
 import { map } from 'rxjs/operators'
 
@@ -11,8 +11,8 @@ const BACKEND_URL = environment.apiUrl + "/screeningInfo";
  
 @Injectable()
 export class StoreSignup{
-    private infoSentToServer: AuthSignup[] = [];
-    private infoUpdated = new Subject<AuthSignup[]>()
+    private infoSentToServer: ScreeningRequest[] = [];
+    private infoUpdated = new Subject<ScreeningRequest[]>()
     
     constructor(private httpClient: HttpClient) {}
     

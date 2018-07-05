@@ -4,14 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { StoreSignup } from './auth/storeSignup.service';
+import { ScreeningRequestComponent } from './screeningRequestForm/screeningRequest/screeningRequest.component';
+import { StoreSignup } from './screeningRequestForm/storeSignup.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { Routes, RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,9 +27,7 @@ const appRoutes = [
 
   {path: '', component: HomeComponent},
   
-  {path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
-  
-  {path: 'signin', component: SigninComponent},
+  {path: 'signup', component: ScreeningRequestComponent, canActivate: [AuthGuard]},
   
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
 
@@ -46,9 +42,7 @@ const appRoutes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
-    SignupComponent,
-    HeaderComponent,
+    ScreeningRequestComponent,
     HomeComponent,
     NavbarComponent,
     DashboardComponent,
