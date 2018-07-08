@@ -21,6 +21,8 @@ import { AuthenticationService } from './authentication/authentication.service';
 
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
+import { SigninComponent } from './tenant/authentication/signin/signin.component';
+import { SignupComponent } from './tenant/authentication/signup/signup.component';
 
 
 const appRoutes = [
@@ -48,7 +50,10 @@ const appRoutes = [
     DashboardComponent,
     SigninAuthenticationComponent,
     SignupAuthenticationComponent,
-    ScreeningReportsComponent
+    ScreeningReportsComponent,
+    SigninComponent,
+    SignupComponent
+    
   
     
   ],
