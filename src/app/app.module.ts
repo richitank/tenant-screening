@@ -14,13 +14,13 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ScreeningReportsComponent } from "./screening-reports/screening-reports.component";
 import { SigninAuthenticationComponent } from './authentication/signin/signin.component';
 import { SignupAuthenticationComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './authentication/authentication.service';
+
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
-import { SideNavComponent } from './dashboard/side-nav/side-nav.component';
-import { ScreeningComponent } from './dashboard/screening/screening.component';
 
 
 const appRoutes = [
@@ -35,7 +35,7 @@ const appRoutes = [
 
   {path: 'home-signup', component: SignupAuthenticationComponent},
 
-  {path: 'dashboard/screening', component: ScreeningComponent}
+  {path: 'screening-reports', component: ScreeningReportsComponent}
  
 ];
 
@@ -48,8 +48,8 @@ const appRoutes = [
     DashboardComponent,
     SigninAuthenticationComponent,
     SignupAuthenticationComponent,
-    SideNavComponent,
-    ScreeningComponent
+    ScreeningReportsComponent
+  
     
   ],
   imports: [

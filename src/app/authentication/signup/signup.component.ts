@@ -23,11 +23,11 @@ export class SignupAuthenticationComponent implements OnInit, OnDestroy {
    }
    
    
-  this.authentication.createUser(form.value.noOfUnits, form.value.firstName, form.value.lastName, form.value.applicantPhoneNo, form.value.email, 
-    form.value.password)
-    
-                                   
+  this.authentication.createUser(form.value.noOfUnits, form.value.firstName, form.value.lastName, 
+    form.value.applicantPhoneNo, form.value.email, form.value.password)
+                               
     }
+    
 
 ngOnDestroy() {
   //this.authStatusSub.unsubscribe();
