@@ -10,14 +10,12 @@ import { NgForm } from '@angular/forms';
 })
 export class TenantSignupComponent implements OnInit {
 
-
-
   constructor(private tenantAuth: TenantAuth) { }
 
   onSignup(form: NgForm) {
     if(form.invalid) 
     {
-      return
+      return;
     }
     this.tenantAuth.createUser(form.value.firstName, form.value.lastName,form.value.applicantPhoneNo,form.value.email,form.value.password);
     

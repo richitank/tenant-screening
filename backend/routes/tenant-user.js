@@ -43,7 +43,7 @@ router.post("/signin", (req, res, next) => {
             return bcrypt.compare(req.body.password, tenantUser.password);
             
         })
-        fetchedTenantUser = tenantUser
+        
         .then(result => {
             if(!result) {
                 return res.status(401).json({
