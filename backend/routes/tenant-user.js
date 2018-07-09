@@ -30,5 +30,39 @@ router.post("/signup", (req, res, next) => {
         });
 });
 
+router.post("/signin", (req, res, next) => {
+    let fetchedTenantUser;
+    TenantUser.findOne({email: req.body.email})
+        .then(tenantUser => {
+            if(!tenantUser) {
+                return res.status(401).json({
+                    message: "Email ID not found in the DB"
+                })
+            }
+            fetchedTenantUser = tenantUser
+            return bcrypt.compare(req.body.password, tenantUser.password);
+            
+        })
+        fetchedTenantUser = tenantUser
+        .then(result => {
+            if(!result) {
+                return res.status(401).json({
+                    message:"incorrect password"
+                });
+            }
+
+            const token = jwt.sign({email: fetchedTenantUser.email, tenantUserId: fetchedTenantUser._id}, process.env.JWT_KEY, {expiresIn: "1h"})
+            res.status(200).json({
+                token: token
+            })
+        })
+        .catch(error => {
+            error: res.status.json({
+                message: "error at bcrypt compare",
+                error: error
+            })
+        })
+});
+
 module.exports = router;
 
