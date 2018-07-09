@@ -10,11 +10,15 @@ export class TenantAuth {
 
     }
 
-    login(email, login) {
+    login(email, password) {
+        this.httpClient.post("http://localhost:3000/api/tenant-user/signin", {email: email, password: password})
+            .subscribe(response => {
+                console.log(response)
+            })
 
     }
 
-    createUser(firstName,lastName,applicantPhoneNo,email,password){
+    createUser(firstName, lastName, applicantPhoneNo, email, password){
         const tenantAuthData: TenantAuthData = {
             firstName: firstName,
             lastName: lastName,
