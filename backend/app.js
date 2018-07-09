@@ -8,6 +8,7 @@ const screeningRoutes = require("./routes/screeningRequestForms")
 const userRoutes = require("./routes/user");
 const tenantViewRoutes = require("./routes/tenantView")
 const customerSupportRoutes = require("./routes/customerSupport/customerSupport")
+const tenantUserRoutes = require("./routes/tenant-user")
 
 
 //MongoDB connection in node.js
@@ -41,5 +42,7 @@ app.use("/api/screeningInfo", screeningRoutes)
 app.use("/api/user", userRoutes);
 app.use("/api/getInfo", tenantViewRoutes)
 app.use("/api/customerSupport/feedback", customerSupportRoutes)
+
+app.use("/api/tenant-user", tenantUserRoutes)
 
 module.exports = app;   

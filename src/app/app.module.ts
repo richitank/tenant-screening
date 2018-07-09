@@ -18,12 +18,12 @@ import { ScreeningReportsComponent } from "./screening-reports/screening-reports
 import { SigninAuthenticationComponent } from './authentication/signin/signin.component';
 import { SignupAuthenticationComponent } from './authentication/signup/signup.component';
 import { AuthenticationService } from './authentication/authentication.service';
+import { TenantSignupComponent } from "./tenant/tenant-authentication/tenant-signup/tenant-signup.component";
+import { TenantSigninComponent } from "./tenant/tenant-authentication/tenant-signin/tenant-signin.component";
+import { TenantAuth } from "./tenant/tenant-authentication/tenant-auth.service";
 
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
-import { SigninComponent } from './tenant/authentication/signin/signin.component';
-import { SignupComponent } from './tenant/authentication/signup/signup.component';
-
 
 const appRoutes = [
 
@@ -37,7 +37,11 @@ const appRoutes = [
 
   {path: 'home-signup', component: SignupAuthenticationComponent},
 
-  {path: 'screening-reports', component: ScreeningReportsComponent}
+  {path: 'screening-reports', component: ScreeningReportsComponent},
+
+  {path: 'tenant-signup', component: TenantSignupComponent},
+
+  {path: 'tenant-signin', component:TenantSigninComponent}
  
 ];
 
@@ -51,11 +55,8 @@ const appRoutes = [
     SigninAuthenticationComponent,
     SignupAuthenticationComponent,
     ScreeningReportsComponent,
-    SigninComponent,
-    SignupComponent
-    
-  
-    
+    TenantSignupComponent,
+    TenantSigninComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +67,7 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard], 
+  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard, TenantAuth], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
