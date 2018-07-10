@@ -47,6 +47,8 @@ const appRoutes = [
 
   {path: 'tenant-dashboard', component: TenantDashboardComponent},
 
+  {path: 'tenant-applications', component: TenantApplicationsComponent}
+
 ];
 
 @NgModule({
