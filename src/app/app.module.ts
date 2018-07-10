@@ -24,6 +24,7 @@ import { TenantAuth } from "./tenant/tenant-authentication/tenant-auth.service";
 
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
+import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashboard.component';
 
 const appRoutes = [
 
@@ -41,8 +42,10 @@ const appRoutes = [
 
   {path: 'tenant-signup', component: TenantSignupComponent},
 
-  {path: 'tenant-signin', component:TenantSigninComponent}
- 
+  {path: 'tenant-signin', component:TenantSigninComponent},
+
+  {path: 'tenant-dashboard', component: TenantDashboardComponent},
+
 ];
 
 @NgModule({
@@ -56,7 +59,8 @@ const appRoutes = [
     SignupAuthenticationComponent,
     ScreeningReportsComponent,
     TenantSignupComponent,
-    TenantSigninComponent
+    TenantSigninComponent,
+    TenantDashboardComponent
   ],
   imports: [
     BrowserModule,
