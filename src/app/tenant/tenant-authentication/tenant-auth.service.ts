@@ -43,4 +43,11 @@ export class TenantAuth {
                 this.router.navigate(['/tenant-signin'])
             })
     }
+
+    logout() {
+        this.token = null;
+        this.authStatusListener.next(false)
+        this.router.navigate(['/']);
+
+    }
 }

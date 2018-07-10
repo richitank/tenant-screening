@@ -15,7 +15,12 @@
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signup">Owner Signup</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signin">Tenant Login</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signup">Tenant Signup</a></li>
-                        <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onLogout()" >Logout</button> </li>
+
+                        <!-- Landlord/owner Logout -->
+                        <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onOwnerLogout()" >Logout</button> </li>
+                        <!-- Tenant Logout -->
+                        <li *ngIf = "tenantIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onTenantLogout()" >Logout</button> </li>
+
                   </ul>
                     
               </div>
