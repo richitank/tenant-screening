@@ -26,6 +26,7 @@ import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
 import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashboard.component';
 import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant-applications.component';
+import { TenantAuthInterceptor } from "./tenant/tenant-authentication/tenant-auth-interceptor";
 
 const appRoutes = [
 
@@ -75,7 +76,8 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, AuthGuard, TenantAuth], 
+  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true},
+              AuthGuard, TenantAuth], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

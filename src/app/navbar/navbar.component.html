@@ -7,10 +7,10 @@
                   
                   <ul  class="nav navbar-nav navbar-right">
                         <li *ngIf = "userIsAuthenticated"><a routerLink="/dashboard">Dashboard</a></li>
-                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signin">Owner Login</a></li>
-                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/home-signup">Owner Signup</a></li>
-                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/tenant-signin">Tenant Login</a></li>
-                        <li *ngIf = "!userIsAuthenticated"><a routerLink="/tenant-signup">Tenant Signup</a></li>
+                        <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signin">Owner Login</a></li>
+                        <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signup">Owner Signup</a></li>
+                        <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signin">Tenant Login</a></li>
+                        <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signup">Tenant Signup</a></li>
                         <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onLogout()" >Logout</button> </li>
                   </ul>
                     

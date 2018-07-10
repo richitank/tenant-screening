@@ -2,22 +2,30 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { TenantAuthData } from "./tenant-auth.model"
+import { Subject } from "rxjs";
 
 @Injectable()
 export class TenantAuth {
     private token: string;
+    private authStatusListener = new Subject<boolean>()
 
     constructor(private httpClient: HttpClient, private router: Router){ }
 
-    C () {
+    getToken() {
         this.token;
     }
+
+    getAuthStatusListener() {
+        return this.authStatusListener.asObservable();
+    }
+        
 
     login(email, password) {
         this.httpClient.post("http://localhost:3000/api/tenant-user/signin", {email: email, password: password})
             .subscribe(response => {
-                console.log(response)
-                this.router.navigate(['/tenant-dashboard'])
+                console.log(response);
+                this.router.navigate(['/tenant-dashboard']);
+                this.authStatusListener.next(true);
             })
 
     }

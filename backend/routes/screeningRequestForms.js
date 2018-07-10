@@ -6,8 +6,6 @@ const nodemailer = require('nodemailer');
 
 const checkAuth = require("../middleware/check-auth")
 
-const checkTenantAuth = require("../middleware/check-tenant-auth")
-
 const ScreeningRequestForm = require('../models/screeningRequestForm')
 
 
