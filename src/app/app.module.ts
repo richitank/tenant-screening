@@ -25,6 +25,7 @@ import { TenantAuth } from "./tenant/tenant-authentication/tenant-auth.service";
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { AuthGuard } from './authentication/auth.guard';
 import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashboard.component';
+import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant-applications.component';
 
 const appRoutes = [
 
@@ -60,7 +61,8 @@ const appRoutes = [
     ScreeningReportsComponent,
     TenantSignupComponent,
     TenantSigninComponent,
-    TenantDashboardComponent
+    TenantDashboardComponent,
+    TenantApplicationsComponent
   ],
   imports: [
     BrowserModule,
