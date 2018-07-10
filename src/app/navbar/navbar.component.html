@@ -6,7 +6,11 @@
                 </div>
                   
                   <ul  class="nav navbar-nav navbar-right">
-                        <li *ngIf = "userIsAuthenticated"><a routerLink="/dashboard">Dashboard</a></li>
+                    <!-- Landlord/Owner Dashboard -->
+                        <li *ngIf = "userIsAuthenticated"><a routerLink="/dashboard">Dashboard</a></li> 
+                        <!-- Tenant Dashboard -->
+                        <li *ngIf = "tenantIsAuthenticated"><a routerLink="/tenant-dashboard">Dashboard</a></li>
+
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signin">Owner Login</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signup">Owner Signup</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signin">Tenant Login</a></li>
