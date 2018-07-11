@@ -8,6 +8,6 @@ module.exports = (req, res, next) => {
         
         next();
     } catch(error) {
-        res.status(401).json({message: "Auth Failed check-tenant-auth"})
+        res.status(401).json({message: "Auth Failed check-tenant-auth"});
     }
 }

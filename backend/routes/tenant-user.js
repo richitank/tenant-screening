@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router()
 
+
+
 router.post("/signup", (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {

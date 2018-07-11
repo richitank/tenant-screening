@@ -6,6 +6,7 @@ import { Subject } from "rxjs";
 
 @Injectable()
 export class TenantAuth {
+    private isAuthenticated = false;
     private token: string;
     private authStatusListener = new Subject<boolean>()
 
@@ -15,17 +16,26 @@ export class TenantAuth {
         this.token;
     }
 
+    //Check whether user is authenticated
+    getIsAuth() {
+        return this.isAuthenticated;
+    }
+
     getAuthStatusListener() {
         return this.authStatusListener.asObservable();
     }
         
 
-    login(email, password) {
-        this.httpClient.post("http://localhost:3000/api/tenant-user/signin", {email: email, password: password})
+    login(email: string, password: string) {
+        this.httpClient.post<{token: string}>("http://localhost:3000/api/tenant-user/signin", {email: email, password: password})
             .subscribe(response => {
-                console.log(response);
-                this.router.navigate(['/tenant-dashboard']);
-                this.authStatusListener.next(true);
+                const token = response.token;
+                this.token = token;
+                if(token) {
+                    this.isAuthenticated = true;
+                    this.authStatusListener.next(true);                
+                    this.router.navigate(['/tenant-dashboard']);
+                }                
             })
 
     }
@@ -38,9 +48,10 @@ export class TenantAuth {
             email: email,
             password: password
         }
-        this.httpClient.post<{token: string}>("http://localhost:3000/api/tenant-user/signup", tenantAuthData)
+        this.httpClient.post("http://localhost:3000/api/tenant-user/signup", tenantAuthData)
             .subscribe(response => {
-                this.router.navigate(['/tenant-signin'])
+                console.log(response);
+                this.router.navigate(['/tenant-signin']);
             })
     }
 

@@ -27,6 +27,7 @@ import { AuthGuard } from './authentication/auth.guard';
 import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashboard.component';
 import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant-applications.component';
 import { TenantAuthInterceptor } from "./tenant/tenant-authentication/tenant-auth-interceptor";
+import { TenantAuthGuard } from "./tenant/tenant-authentication/tenant-auth.guard"
 
 const appRoutes = [
 
@@ -40,15 +41,15 @@ const appRoutes = [
 
   {path: 'home-signup', component: SignupAuthenticationComponent},
 
-  {path: 'screening-reports', component: ScreeningReportsComponent},
+  {path: 'screening-reports', component: ScreeningReportsComponent, canActivate: [AuthGuard]},
 
   {path: 'tenant-signup', component: TenantSignupComponent},
 
   {path: 'tenant-signin', component:TenantSigninComponent},
 
-  {path: 'tenant-dashboard', component: TenantDashboardComponent},
+  {path: 'tenant-dashboard', component: TenantDashboardComponent, canActivate: [TenantAuthGuard]},
 
-  {path: 'tenant-applications', component: TenantApplicationsComponent}
+  {path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard]}
 
 ];
 
@@ -77,7 +78,7 @@ const appRoutes = [
     MatToolbarModule
   ],
   providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true},
-              AuthGuard, TenantAuth], 
+              AuthGuard, TenantAuth, TenantAuthGuard], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
