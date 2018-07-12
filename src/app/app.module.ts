@@ -30,7 +30,7 @@ import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashb
 import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant-applications.component';
 import { TenantAuthInterceptor } from "./tenant/tenant-authentication/tenant-auth-interceptor";
 import { TenantAuthGuard } from "./tenant/tenant-authentication/tenant-auth.guard";
-import { TenantApplicationFormComponent } from './tenant/tenant-application-form/tenant-application-form.component'
+import { TenantApplicationFormComponent } from './tenant/tenant-app-form/tenant-app-form.component'
 
 const appRoutes = [
 
