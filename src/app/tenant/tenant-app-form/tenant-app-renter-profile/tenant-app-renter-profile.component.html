@@ -1,3 +1,83 @@
-<p>
-  tenant-app-renter-profile works!
-</p>
+<div class="container">
+    <div class="row">
+      
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSignup(f)" #f="ngForm">
+            
+            <h2>Employment & Income</h2>
+            <p>At least two years of employment history is recommended. </p>
+          <div id="user-data">
+            <div class="row">
+              <div class="form-group col-xs-6">
+              <label for="employer">Employer</label>
+              <input type="text" id="employer" class="form-control" name="employer" ngModel required>
+            </div>
+            <div class="form-group col-xs-6">
+              <label for="position">Title / Position</label>
+              <input type="text" id="position" class="form-control" name="position" ngModel required>
+            </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-xs-6">
+                  <label for="startDate">Start Date</label>
+                  <input type="text" bsDatepicker id="startDate" name="startDate" ngModel class="form-control" required >
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="endDate">End Date</label>
+                    <input type="text" id="endDate" bsDatepicker name="endDate" ngModel class="form-control" required >
+                  </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-xs-6">
+                  <label for="firstName">Contact First Name</label>
+                  <input type="text" bsDatepicker id="firstName" name="firstName" ngModel class="form-control" required >
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="endDate">Contact Last Name</label>
+                    <input type="text" id="endDate" name="endDate" ngModel class="form-control" required >
+                  </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-xs-6">
+                  <label for="email">Contact Email</label>
+                  <input type="email" bsDatepicker id="email" name="email" ngModel class="form-control" required email>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="phone">Contact Phone</label>
+                    <input type="number" id="phone" name="phone" ngModel class="form-control" required email>
+                </div>
+          </div>
+            
+
+            <div class="form-group">
+              <label for="applicantPhoneNo">Phone (Optional): </label>
+              <input type="tel" minlength="9" maxlength="13" name="applicantPhoneNo" ngModel class="form-control">
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary block" disabled>
+              Add Another Applicant
+            </button>
+            <p>This button is disabled.</p>
+          </div> 
+          <hr> 
+          <br>
+          <br>
+          <br>
+
+      <button class="btn btn-success btn-block" type="submit" [disabled]="!f.valid" >Send Requests</button>
+      <p>After sending requests check tenant's inbox to proceed.</p>
+    </form>
+    <br>
+    <div *ngIf="userIsAuthenticated">
+        <button class="btn btn-success btn-block" routerLink="/dashboard">Go back to DashBoard</button>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+
+
+
+

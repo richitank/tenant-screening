@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 import { AppComponent } from './app.component';
 import { ScreeningRequestComponent } from './screeningRequestForm/screeningRequest/screeningRequest.component';
@@ -55,7 +55,9 @@ const appRoutes = [
 
   {path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard]},
 
-  {path: "tenant-rent-application-form", component: TenantAppFormComponent}
+  {path: "tenant-rent-application-form", component: TenantAppFormComponent},
+
+  {path: "tenant-rent-application-form/renter-profile", component: TenantAppRenterProfileComponent}
 
 ];
 
@@ -82,6 +84,7 @@ const appRoutes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule
