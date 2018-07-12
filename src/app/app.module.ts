@@ -52,7 +52,7 @@ const appRoutes = [
 
   {path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard]},
 
-  {path: "tenant-rent-application-form", component: TenantApplicationFormComponent, canActivate: [TenantAuthGuard]}
+  {path: "tenant-rent-application-form", component: TenantApplicationFormComponent}
 
 ];
 

@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^2.2.0",
     "bcrypt": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
