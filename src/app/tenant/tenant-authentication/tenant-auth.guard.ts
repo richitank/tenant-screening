@@ -11,7 +11,7 @@ export class TenantAuthGuard implements CanActivate{
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         const isAuth = this.tenantAuth.getIsAuth();
-        console.log(isAuth)
+        //console.log(isAuth)
         if(!isAuth) {
              this.router.navigate(["/tenant-signin"])
         }
