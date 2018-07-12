@@ -30,7 +30,8 @@ import { TenantDashboardComponent } from './tenant/tenant-dashboard/tenant-dashb
 import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant-applications.component';
 import { TenantAuthInterceptor } from "./tenant/tenant-authentication/tenant-auth-interceptor";
 import { TenantAuthGuard } from "./tenant/tenant-authentication/tenant-auth.guard";
-import { TenantApplicationFormComponent } from './tenant/tenant-app-form/tenant-app-form.component'
+import { TenantAppFormComponent } from './tenant/tenant-app-form/tenant-app-form.component';
+import { TenantAppRenterProfileComponent } from './tenant/tenant-app-form/tenant-app-renter-profile/tenant-app-renter-profile.component'
 
 const appRoutes = [
 
@@ -54,7 +55,7 @@ const appRoutes = [
 
   {path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard]},
 
-  {path: "tenant-rent-application-form", component: TenantApplicationFormComponent}
+  {path: "tenant-rent-application-form", component: TenantAppFormComponent}
 
 ];
 
@@ -72,7 +73,8 @@ const appRoutes = [
     TenantSigninComponent,
     TenantDashboardComponent,
     TenantApplicationsComponent,
-    TenantApplicationFormComponent
+    TenantAppFormComponent,
+    TenantAppRenterProfileComponent
   ],
   imports: [
     BrowserModule,
