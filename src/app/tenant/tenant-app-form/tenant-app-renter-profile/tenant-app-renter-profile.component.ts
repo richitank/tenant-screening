@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tenant-app-renter-profile.component.css']
 })
 export class TenantAppRenterProfileComponent implements OnInit {
+  annualSalary: number = 0;
 
   constructor() { }
 
