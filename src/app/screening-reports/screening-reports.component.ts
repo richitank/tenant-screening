@@ -15,10 +15,10 @@ export class ScreeningReportsComponent implements OnInit, OnDestroy {
   constructor(public storeSignup: StoreSignup) { }
 
   ngOnInit() {
-  
+
     this.storeSignup.getInfo(); //trigger http GET when ngOnInit is called
-  
-    
+
+
     this.infoSentToServerSub = this.storeSignup.getInfoUpdateListener()
       .subscribe((signupInfo: ScreeningRequest[]) => {
         this.infoSentToServer = signupInfo
@@ -28,5 +28,5 @@ export class ScreeningReportsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.infoSentToServerSub.unsubscribe();
   }
-  
+
 }

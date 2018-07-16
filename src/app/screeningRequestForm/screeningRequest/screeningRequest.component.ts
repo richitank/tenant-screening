@@ -12,16 +12,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./screeningRequest.component.css']
 })
 export class ScreeningRequestComponent implements OnInit, OnDestroy {
-    
-     userIsAuthenticated = false;    
-     private authStatusSub :Subscription;
-  
 
-  constructor( 
-              private storeSignup: StoreSignup, 
-              private http: HttpClient, 
-              private authenticationService :AuthenticationService) //Node.js authentication
-              { }
+  userIsAuthenticated = false;
+  private authStatusSub: Subscription;
+
+
+  constructor(
+    private storeSignup: StoreSignup,
+    private http: HttpClient,
+    private authenticationService: AuthenticationService) //Node.js authentication
+  { }
 
   ngOnInit() {
     this.userIsAuthenticated = this.authenticationService.getIsAuth();
@@ -31,16 +31,16 @@ export class ScreeningRequestComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         console.log(isAuthenticated);
       });
- }
+  }
 
   ngOnDestroy() {
-   this.authStatusSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
-  
+
 
   onSignup(form: NgForm) {
     console.log(form.value.email);
-    
+
     //tenant details
     const option = form.value.opt1;
     const applicantFirstName = form.value.applicantFirstName;
@@ -48,31 +48,31 @@ export class ScreeningRequestComponent implements OnInit, OnDestroy {
     const applicantEmail = form.value.applicantEmail;
     const applicantPhoneNo = form.value.applicantPhoneNo;
 
-     const infoSentToServer = {
-       applicantFirstName:applicantFirstName, 
-       applicantLastName: applicantLastName,
-       applicantEmail: applicantEmail, 
-       applicantPhoneNo: applicantPhoneNo,
-       screeningCost: option,
-      }
+    const infoSentToServer = {
+      applicantFirstName: applicantFirstName,
+      applicantLastName: applicantLastName,
+      applicantEmail: applicantEmail,
+      applicantPhoneNo: applicantPhoneNo,
+      screeningCost: option,
+    }
 
 
     //if(this.userIsAuthenticated) {
-      console.log("userIsAuthenticated: " + this.userIsAuthenticated)//If not logged in, then email will not be sent.
-      this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
+    console.log("userIsAuthenticated: " + this.userIsAuthenticated)//If not logged in, then email will not be sent.
+    this.storeSignup.sendSignupInfoToBackend(infoSentToServer)
 
     //}
-    
-      //this.storeSignup.getInfo();
 
-      // this.authenticationService.createUser(form.value.noOfUnits, 
-      //   form.value.firstName, 
-      //   form.value.lastName,
-      //   form.value.applicantPhoneNo, 
-      //   form.value.email, 
-      //   form.value.password
-      // )
-    
+    //this.storeSignup.getInfo();
+
+    // this.authenticationService.createUser(form.value.noOfUnits, 
+    //   form.value.firstName, 
+    //   form.value.lastName,
+    //   form.value.applicantPhoneNo, 
+    //   form.value.email, 
+    //   form.value.password
+    // )
+
   }
 
 }

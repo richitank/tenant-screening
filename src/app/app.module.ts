@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 
 import { AppComponent } from './app.component';
 import { ScreeningRequestComponent } from './screeningRequestForm/screeningRequest/screeningRequest.component';
 import { StoreSignup } from './screeningRequestForm/storeSignup.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -31,33 +31,34 @@ import { TenantApplicationsComponent } from './tenant/tenant-applications/tenant
 import { TenantAuthInterceptor } from "./tenant/tenant-authentication/tenant-auth-interceptor";
 import { TenantAuthGuard } from "./tenant/tenant-authentication/tenant-auth.guard";
 import { TenantAppFormComponent } from './tenant/tenant-app-form/tenant-app-form.component';
-import { TenantAppRenterProfileComponent } from './tenant/tenant-app-form/tenant-app-renter-profile/tenant-app-renter-profile.component'
+import { TenantAppRenterProfileComponent } from './tenant/tenant-app-form/tenant-app-renter-profile/tenant-app-renter-profile.component';
+import { TenantAppFormService } from './tenant/tenant-app-form/tenant-app-form.service';
 
 const appRoutes = [
 
-  {path: '', component: HomeComponent},
-  
-  {path: 'screening-request', component: ScreeningRequestComponent, canActivate: [AuthGuard]},
-  
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: '', component: HomeComponent },
 
-  {path: 'home-signin', component: SigninAuthenticationComponent},
+  { path: 'screening-request', component: ScreeningRequestComponent, canActivate: [AuthGuard] },
 
-  {path: 'home-signup', component: SignupAuthenticationComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
-  {path: 'screening-reports', component: ScreeningReportsComponent, canActivate: [AuthGuard]},
+  { path: 'home-signin', component: SigninAuthenticationComponent },
 
-  {path: 'tenant-signup', component: TenantSignupComponent},
+  { path: 'home-signup', component: SignupAuthenticationComponent },
 
-  {path: 'tenant-signin', component:TenantSigninComponent},
+  { path: 'screening-reports', component: ScreeningReportsComponent, canActivate: [AuthGuard] },
 
-  {path: 'tenant-dashboard', component: TenantDashboardComponent, canActivate: [TenantAuthGuard]},
+  { path: 'tenant-signup', component: TenantSignupComponent },
 
-  {path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard]},
+  { path: 'tenant-signin', component: TenantSigninComponent },
 
-  {path: "tenant-rent-application-form", component: TenantAppFormComponent},
+  { path: 'tenant-dashboard', component: TenantDashboardComponent, canActivate: [TenantAuthGuard] },
 
-  {path: "tenant-rent-application-form/renter-profile", component: TenantAppRenterProfileComponent}
+  { path: 'tenant-applications', component: TenantApplicationsComponent, canActivate: [TenantAuthGuard] },
+
+  { path: "tenant-rent-application-form", component: TenantAppFormComponent },
+
+  { path: "tenant-rent-application-form/renter-profile", component: TenantAppRenterProfileComponent }
 
 ];
 
@@ -89,8 +90,8 @@ const appRoutes = [
     BrowserAnimationsModule,
     MatToolbarModule
   ],
-  providers: [StoreSignup, AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, {provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true},
-              AuthGuard, TenantAuth, TenantAuthGuard], 
+  providers: [StoreSignup, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true },
+    AuthGuard, TenantAuth, TenantAuthGuard, TenantAppFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

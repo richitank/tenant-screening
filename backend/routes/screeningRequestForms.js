@@ -11,12 +11,13 @@ const ScreeningRequestForm = require('../models/screeningRequestForm')
 
 router.post("", checkAuth, (req, res, next) => {
 
-    if(req.body.screeningCost == 1) {
+    if (req.body.screeningCost == 1) {
         req.body.screeningCost = 39.99
     }
-    else if(req.body.screeningCost == 2 || req.body.screeningCost == 3) {
+    else if (req.body.screeningCost == 2 || req.body.screeningCost == 3) {
         req.body.screeningCost = 24.99
-        console.log(req.body.screeningCost) }
+        console.log(req.body.screeningCost)
+    }
 
     const output = `<h3> 
     <p>Hi ${req.body.applicantFirstName}, </h3>, 
@@ -40,61 +41,61 @@ router.post("", checkAuth, (req, res, next) => {
     `;
 
     // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-        user: 'amshu.k1956@gmail.com', // generated ethereal user
-        pass: 'qazwsx6969'  // generated ethereal password
-    },
-    tls:{
-      rejectUnauthorized:false
-    }
-  });
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: 'amshu.k1956@gmail.com', // generated ethereal user
+            pass: 'qazwsx6969'  // generated ethereal password
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
 
-  // setup email data with unicode symbols
-  let mailOptions = {
-      from: '"OffrBox" <amshu.k1956@gmail.com>', // sender address
-      to: req.body.applicantEmail, // list of receivers
-      subject: 'OffrBox - Background Screening Required', // Subject line
-      text: 'Hello world?', // plain text body
-      html: output // html body
-  };
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"OffrBox" <amshu.k1956@gmail.com>', // sender address
+        to: req.body.applicantEmail, // list of receivers
+        subject: 'OffrBox - Background Screening Required', // Subject line
+        text: 'Hello world?', // plain text body
+        html: output // html body
+    };
 
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          return console.log(error);
-      }
-      console.log('Message sent: %s', info.messageId);   
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('contact', {msg:'Email has been sent'});
-  });
+        res.render('contact', { msg: 'Email has been sent' });
+    });
 
 
-  //Inserting data to DB
-  const signupForm = new ScreeningRequestForm({
-    applicantFirstName: req.body.applicantFirstName,
-    applicantLastName: req.body.applicantLastName,
-    applicantEmail: req.body.applicantEmail,
-    applicantPhoneNo: req.body.applicantPhoneNo,
-    screeningCost: req.body.screeningCost,
-    creator: req.userData.userId
-  });
-  signupForm.save();
+    //Inserting data to DB
+    const signupForm = new ScreeningRequestForm({
+        applicantFirstName: req.body.applicantFirstName,
+        applicantLastName: req.body.applicantLastName,
+        applicantEmail: req.body.applicantEmail,
+        applicantPhoneNo: req.body.applicantPhoneNo,
+        screeningCost: req.body.screeningCost,
+        creator: req.userData.userId
+    });
+    signupForm.save();
 
-  res.status(201).json({
+    res.status(201).json({
 
-     message: 'Email received at server succesfully' 
-  });
-  });
-  
+        message: 'Email received at server succesfully'
+    });
+});
+
 
 //Get/Fetch Data from DB for the Owner
 router.get("/getInfo", checkAuth, (req, res, next) => {
-    ScreeningRequestForm.find({creator: req.userData.userId})
+    ScreeningRequestForm.find({ creator: req.userData.userId })
         .then(documents => {
             res.status(200).json({
                 ScreeningRequestForms: documents

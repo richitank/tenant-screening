@@ -10,7 +10,7 @@ export class TenantAuth {
     private token: string;
     private authStatusListener = new Subject<boolean>()
 
-    constructor(private httpClient: HttpClient, private router: Router){ }
+    constructor(private httpClient: HttpClient, private router: Router) { }
 
     getToken() {
         this.token;
@@ -24,23 +24,23 @@ export class TenantAuth {
     getAuthStatusListener() {
         return this.authStatusListener.asObservable();
     }
-        
+
 
     login(email: string, password: string) {
-        this.httpClient.post<{token: string}>("http://localhost:3000/api/tenant-user/signin", {email: email, password: password})
+        this.httpClient.post<{ token: string }>("http://localhost:3000/api/tenant-user/signin", { email: email, password: password })
             .subscribe(response => {
                 const token = response.token;
                 this.token = token;
-                if(token) {
+                if (token) {
                     this.isAuthenticated = true;
-                    this.authStatusListener.next(true);                
+                    this.authStatusListener.next(true);
                     this.router.navigate(['/tenant-dashboard']);
-                }                
+                }
             })
 
     }
 
-    createUser(firstName, lastName, applicantPhoneNo, email, password){
+    createUser(firstName, lastName, applicantPhoneNo, email, password) {
         const tenantAuthData: TenantAuthData = {
             firstName: firstName,
             lastName: lastName,
