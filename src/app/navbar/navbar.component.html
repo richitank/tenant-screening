@@ -6,21 +6,38 @@
                   </a>
                 </div>
                   <ul  class="nav navbar-nav navbar-right" style="background-color:white; ">
-                    <!-- Landlord/Owner Dashboard -->
+                    <!-- Landlord/Owner Dashboard --> 
                         <li *ngIf = "userIsAuthenticated"><a routerLink="/dashboard">Dashboard</a></li> 
+                       
                         <!-- Tenant Dashboard -->
                         <li *ngIf = "tenantIsAuthenticated"><a routerLink="/tenant-dashboard">Dashboard</a></li>
+
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signin">Owner Login</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/home-signup">Owner Signup</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signin">Tenant Login</a></li>
                         <li *ngIf = "!userIsAuthenticated && !tenantIsAuthenticated"><a routerLink="/tenant-signup">Tenant Signup</a></li>
 
                         <!-- Landlord/owner Logout -->
-                        <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onOwnerLogout()">Logout</button> </li>
+                        <li *ngIf = "userIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onOwnerLogout()" >Logout</button> </li>
                         <!-- Tenant Logout -->
-                        <li *ngIf = "tenantIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onTenantLogout()">Logout</button></li>
+                        <li *ngIf = "tenantIsAuthenticated"><button class="btn btn-primary btn-lg" (click)="onTenantLogout()" >Logout</button> </li>
 
                   </ul>
                     
+                  <!-- <div class="btn-group" dropdown>
+                      <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                              aria-controls="dropdown-basic">
+                        Button dropdown <span class="caret"></span>
+                      </button>
+                      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                          role="menu" aria-labelledby="button-basic">
+                        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                        </li>
+                      </ul>
+                    </div> -->
               </div>
       </nav>

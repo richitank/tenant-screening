@@ -3,6 +3,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 import { Subscription } from 'rxjs';
 import { TenantAuth } from '../tenant/tenant-authentication/tenant-auth.service';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
