@@ -1,3 +1,13 @@
 Choose a property to start.
 
 <button class="btn btn primary" routerLink="/tenant-rent-application-form">Apply to Rent</button>
+
+Past Applications:
+<div *ngFor="let info of infoSentToServer">
+                
+        <div class="bs-callout bs-callout-success"> 
+          <h3>{{info.contactEmail}} {{info.contactEmail}}</h3>
+          <h5><a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a></h5>
+          <br>
+        </div>
+      </div>
