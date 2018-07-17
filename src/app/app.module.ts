@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 import { AppComponent } from './app.component';
 import { ScreeningRequestComponent } from './screeningRequestForm/screeningRequest/screeningRequest.component';
@@ -86,6 +88,7 @@ const appRoutes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule

@@ -2,6 +2,7 @@
     <div class="well">
 Choose a property to start:
 
+<<<<<<< HEAD
 <div class="card" style="width: 25px;">
         <img class="card-img-top" src="../../assets/Capture.JPG" alt="Card image cap">
         <div class="card-body">
@@ -14,3 +15,16 @@ Choose a property to start:
 <!-- <button class="btn btn primary" routerLink="/tenant-rent-application-form">Apply to Rent</button> -->
 </div>
 </div>
+=======
+<button class="btn btn primary" routerLink="/tenant-rent-application-form">Apply to Rent</button>
+
+Past Applications:
+<div *ngFor="let info of infoSentToServer">
+                
+        <div class="bs-callout bs-callout-success"> 
+          <h3>{{info.contactEmail}} {{info.contactEmail}}</h3>
+          <h5><a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a></h5>
+          <br>
+        </div>
+      </div>
+>>>>>>> 87a6e3eb308f582edd787b421f95f3073d227a00

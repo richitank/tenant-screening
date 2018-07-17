@@ -33,11 +33,19 @@ router.post("/post", (req, res, next) => {
         refYearsKnown: req.body.refYearsKnown
     });
     tenantAppForm.save();
-    console.log(tenantAppForm)
     res.status(201).json({
         message: "Insert Successful"
     })
 
+})
+
+router.get("/get", (req, res, next) => {
+    TenantAppForm.find()
+        .then(documents => {
+            res.status(200).json({
+                TenantAppForm: documents
+            })
+        })
 })
 
 module.exports = router;
