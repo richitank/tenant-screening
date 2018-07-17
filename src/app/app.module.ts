@@ -36,6 +36,7 @@ import { TenantAppFormComponent } from './tenant/tenant-app-form/tenant-app-form
 import { TenantAppRenterProfileComponent } from './tenant/tenant-app-form/tenant-app-renter-profile/tenant-app-renter-profile.component';
 import { TenantAppFormService } from './tenant/tenant-app-form/tenant-app-form.service';
 import { TenantAddCoapplicantComponent } from './tenant/tenant-app-form/tenant-add-coapplicant/tenant-add-coapplicant.component';
+import { TenantAddCoApplicantService } from './tenant/tenant-app-form/tenant-add-coapplicant/tenant-add-coapplicant.service';
 
 const appRoutes = [
 
@@ -98,7 +99,7 @@ const appRoutes = [
     MatToolbarModule
   ],
   providers: [StoreSignup, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true },
-    AuthGuard, TenantAuth, TenantAuthGuard, TenantAppFormService],
+    AuthGuard, TenantAuth, TenantAuthGuard, TenantAppFormService, TenantAddCoApplicantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
