@@ -35,6 +35,8 @@ import { TenantAuthGuard } from "./tenant/tenant-authentication/tenant-auth.guar
 import { TenantAppFormComponent } from './tenant/tenant-app-form/tenant-app-form.component';
 import { TenantAppRenterProfileComponent } from './tenant/tenant-app-form/tenant-app-renter-profile/tenant-app-renter-profile.component';
 import { TenantAppFormService } from './tenant/tenant-app-form/tenant-app-form.service';
+import { TenantAddCoapplicantComponent } from './tenant/tenant-app-form/tenant-add-coapplicant/tenant-add-coapplicant.component';
+import { TenantAddCoApplicantService } from './tenant/tenant-app-form/tenant-add-coapplicant/tenant-add-coapplicant.service';
 
 const appRoutes = [
 
@@ -60,7 +62,9 @@ const appRoutes = [
 
   { path: "tenant-rent-application-form", component: TenantAppFormComponent },
 
-  { path: "tenant-rent-application-form/renter-profile", component: TenantAppRenterProfileComponent }
+  { path: "tenant-rent-application-form/renter-profile", component: TenantAppRenterProfileComponent },
+
+  { path: "tenant-rent-application-form/add-co-applicant", component: TenantAddCoapplicantComponent}
 
 ];
 
@@ -79,7 +83,8 @@ const appRoutes = [
     TenantDashboardComponent,
     TenantApplicationsComponent,
     TenantAppFormComponent,
-    TenantAppRenterProfileComponent
+    TenantAppRenterProfileComponent,
+    TenantAddCoapplicantComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +99,7 @@ const appRoutes = [
     MatToolbarModule
   ],
   providers: [StoreSignup, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: TenantAuthInterceptor, multi: true },
-    AuthGuard, TenantAuth, TenantAuthGuard, TenantAppFormService],
+    AuthGuard, TenantAuth, TenantAuthGuard, TenantAppFormService, TenantAddCoApplicantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

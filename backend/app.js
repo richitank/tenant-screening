@@ -10,6 +10,7 @@ const tenantViewRoutes = require("./routes/tenantView")
 const customerSupportRoutes = require("./routes/customerSupport/customerSupport")
 const tenantUserRoutes = require("./routes/tenant-user")
 const tenatAppForm = require("./routes/tenantAppForm")
+const tenatAddCoApplicant = require("./routes/tenant-add-co-applicant")
 
 
 //MongoDB connection in node.js
@@ -46,5 +47,6 @@ app.use("/api/customerSupport/feedback", customerSupportRoutes)
 
 app.use("/api/tenant-user", tenantUserRoutes)
 app.use("/api/tenant/tenant-application-form", tenatAppForm)
+app.use("/api/tenant/tenant-application-form/add-co-applicant", tenatAddCoApplicant)
 
 module.exports = app;   
