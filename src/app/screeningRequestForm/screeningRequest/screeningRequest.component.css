@@ -17,3 +17,7 @@ label > input{ /* HIDE RADIO */
 input.ng-invalid.ng-touched {
     border: 1px solid red
   }
+  body{
+
+    padding-top:50px;
+  }

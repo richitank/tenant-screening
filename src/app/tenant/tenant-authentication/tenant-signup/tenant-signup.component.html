@@ -1,9 +1,14 @@
+<body style="padding-top:50px; ">
+  <div class="container" style="width:800px; height:500px; justify-content:center;">
+    <div class="well" id="well1"> 
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSignup(f)" #f="ngForm">
 
             <div class="row">
-              <div class="form-group col-xs-6">
+                <h2 style="text-align:center; ">SIGN-UP</h2>
+              <div class="form-group col-xs-6" id="form1"  >
+                 
                 <label for="firstName">First Name</label>
                 <input type="text" id="ownerFirstName" name="firstName" ngModel class="form-control" required>
               </div>
@@ -31,10 +36,13 @@
             class="form-control"
             required
             >
-        </div>
+        </div><br>
         <button class="btn btn-success btn-block" type="submit" [disabled]="!f.valid">Sign Up</button>
         <!-- <p>Enter your OffrBox Mail</p> -->
         <!-- <button class="btn btn-primary" type="submit" [disabled]="!f.valid" routerLink="/loggedin">Sign In</button> -->
       </form>
     </div>
   </div>
+</div>
+</div>
+</body>

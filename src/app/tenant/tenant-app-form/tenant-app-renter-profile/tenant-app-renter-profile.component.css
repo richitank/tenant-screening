@@ -1,3 +1,4 @@
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
@@ -8,3 +9,16 @@ input::-webkit-inner-spin-button {
 input.ng-invalid.ng-touched {
     border: 1px solid red
   }
+/* #well1
+{
+    background-color: white;
+    /* width:700px; */
+/* } */
+
+/* #head1
+{
+    background-color: rgb(248, 237, 237);
+    width:850px;
+    margin-top:0px;
+} */ 
+
