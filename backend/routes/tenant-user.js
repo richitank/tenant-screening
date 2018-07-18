@@ -53,9 +53,12 @@ router.post("/signin", (req, res, next) => {
                 });
             }
 
-            const token = jwt.sign({ email: fetchedTenantUser.email, tenantUserId: fetchedTenantUser._id }, process.env.JWT_KEY, { expiresIn: "1h" })
+            const token = jwt.sign(
+                { email: fetchedTenantUser.email, tenantUserId: fetchedTenantUser._id },
+                process.env.JWT_KEY, { expiresIn: "1h" })
             res.status(200).json({
-                token: token
+                token: token,
+                expiresIn: 3600
             })
         })
         .catch(error => {

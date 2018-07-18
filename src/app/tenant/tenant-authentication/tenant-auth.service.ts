@@ -8,12 +8,14 @@ import { Subject } from "rxjs";
 export class TenantAuth {
     private isAuthenticated = false;
     private token: string;
+    private tokenTimer: any;
     private authStatusListener = new Subject<boolean>()
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 
+    //returns token
     getToken() {
-        this.token;
+        return this.token;
     }
 
     //Check whether user is authenticated
@@ -21,17 +23,20 @@ export class TenantAuth {
         return this.isAuthenticated;
     }
 
+    //returns true/false based on user's authentication
     getAuthStatusListener() {
         return this.authStatusListener.asObservable();
     }
 
 
     login(email: string, password: string) {
-        this.httpClient.post<{ token: string }>("http://localhost:3000/api/tenant-user/signin", { email: email, password: password })
+        this.httpClient.post<{ token: string, expiresIn: number }>("http://localhost:3000/api/tenant-user/signin", { email: email, password: password })
             .subscribe(response => {
                 const token = response.token;
                 this.token = token;
                 if (token) {
+                    const expiresInDuration = response.expiresIn;
+                    this.tokenTimer = setTimeout(() => { this.logout() }, expiresInDuration * 3000)
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     this.router.navigate(['/tenant-dashboard']);
@@ -56,7 +61,8 @@ export class TenantAuth {
 
     logout() {
         this.token = null;
-        this.authStatusListener.next(false)
+        this.authStatusListener.next(false);
+        clearTimeout(this.tokenTimer);
         this.router.navigate(['/']);
 
     }
