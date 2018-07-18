@@ -36,11 +36,11 @@ export class TenantAuth {
                 this.token = token;
                 if (token) {
                     const expiresInDuration = response.expiresIn;
-                    this.tokenTimer = setTimeout(() => { this.logout() }, expiresInDuration * 3000)
+                    this.tokenTimer = setTimeout(() => { this.logout() }, expiresInDuration * 1000)
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     const now = new Date();
-                    const expirationDate = new Date(now.getTime() + expiresInDuration * 3000);
+                    const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                     this.saveAuthData(token, expirationDate);
                     this.router.navigate(['/tenant-dashboard']);
                 }
