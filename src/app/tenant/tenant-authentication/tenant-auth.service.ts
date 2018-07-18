@@ -37,7 +37,6 @@ export class TenantAuth {
                     this.router.navigate(['/tenant-dashboard']);
                 }
             })
-
     }
 
     createUser(firstName, lastName, applicantPhoneNo, email, password) {
