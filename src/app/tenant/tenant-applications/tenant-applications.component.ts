@@ -22,6 +22,14 @@ export class TenantApplicationsComponent implements OnInit, OnDestroy {
         console.log(this.infoSentToServer)
       });
   }
+
+  display_show(applicantEmail){
+    
+   console.log(applicantEmail);
+  }
+
+
+
   ngOnDestroy() {
     this.infoSentToServerSub.unsubscribe();
   }

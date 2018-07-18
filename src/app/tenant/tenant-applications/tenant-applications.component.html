@@ -81,16 +81,24 @@
       <div *ngFor="let info of infoSentToServer">
 
         <div class="bs-callout bs-callout-success">
-          <h3>{{info.contactEmail}} {{info.contactEmail}}</h3> 
+          <h3><button type="text">{{info.contactEmail}} {{info.contactEmail}}</button></h3> 
          
             <a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a>
-          <h5>
+
+            <h3><button type="text">{{info.contactFirstName}} {{info.contactLastName}}</button></h3> 
+         
+            <a target="_top" href="mailto:{{info.contactFirstName}}{{info.contactLastName}}">Email: {{info.contactFirstName}} {{info.contactLastName}}</a>
+            <h5>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Past Applications:</h3>
               </div>
               <div class="panel-body">
-                <a routerLink="/" class="btn btn-primary">All</a>
+                <h3><button type="text">{{info.contactEmail}} {{info.contactEmail}}</button></h3> 
+         
+            <a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a>
+                 
+                <a class="btn btn-primary" click="display_show(contactEmail)">All</a>
 
               </div>
             </div>

@@ -43,3 +43,14 @@ background-color:white;
 
 .sidenav a:hover {
     color: #f1f1f1;}
+
+
+.hugebuttons{
+
+    width:170px;
+    height:150px;
+}
+
+.glyphicon.home{
+ font-size: 50px;
+}
