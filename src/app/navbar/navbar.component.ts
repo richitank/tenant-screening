@@ -26,10 +26,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
 
     //Tenant auth listener
+    this.tenantIsAuthenticated = this.tenantAuth.getIsAuth();
     this.tenantAuthListenerSubs = this.tenantAuth.getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.tenantIsAuthenticated = isAuthenticated
-        console.log(this.tenantIsAuthenticated)
       });
   }
   ngOnDestroy() {
