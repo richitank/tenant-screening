@@ -39,6 +39,9 @@ export class TenantAuth {
                     this.tokenTimer = setTimeout(() => { this.logout() }, expiresInDuration * 3000)
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
+                    const now = new Date();
+                    const expirationDate = new Date(now.getTime() + expiresInDuration * 3000);
+                    this.saveAuthData(token, expirationDate);
                     this.router.navigate(['/tenant-dashboard']);
                 }
             })
@@ -63,7 +66,17 @@ export class TenantAuth {
         this.token = null;
         this.authStatusListener.next(false);
         clearTimeout(this.tokenTimer);
+        this.deleteAuthData();
         this.router.navigate(['/']);
+    }
 
+    saveAuthData(token, expirationDate) {
+        localStorage.setItem('token', token);
+        localStorage.setItem('expiration', expirationDate.toISOString());
+    }
+
+    deleteAuthData() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expiration');
     }
 }
