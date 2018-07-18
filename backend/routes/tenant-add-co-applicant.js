@@ -4,10 +4,10 @@ const router = express.Router();
 
 const nodemailer = require('nodemailer');
 
-// const checkAuth = require("../middleware/check-auth")
+const checkTenantAuth = require("../middleware/check-tenant-auth");
 
 
-router.post("", (req, res, next) => {
+router.post("", checkTenantAuth, (req, res, next) => {
     console.log(req.body)
 
     const output = `<h2> 

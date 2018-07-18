@@ -2,7 +2,6 @@ const express = require("express")
 
 const ScreeningRequestForm = require("../models/screeningRequestForm")
 const router = express.Router();
-const checkAuth = require("../middleware/check-auth")
 
 
 //Get/Fetch Data from DB for the TenantView. Called from OffrBox - TenantView Application.

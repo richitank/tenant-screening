@@ -1,9 +1,12 @@
 const express = require("express");
 
 const TenantAppForm = require("../models/tenantAppForm");
+
 const router = express.Router();
 
-router.post("/post", (req, res, next) => {
+const checkTenantAuth = require("../middleware/check-tenant-auth");
+
+router.post("/post", checkTenantAuth, (req, res, next) => {
     const tenantAppForm = new TenantAppForm({
         
         employer: req.body.employer,
