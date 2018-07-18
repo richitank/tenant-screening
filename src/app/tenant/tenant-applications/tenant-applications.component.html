@@ -32,52 +32,71 @@
 <!-- <button class="btn btn primary" routerLink="/tenant-rent-application-form">Apply to Rent</button> -->
 
 <div class="container">
-    
-    <div class="row">
-  
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <h3>Properties To Rent: </h3>
+
+      <div class="row">
+        <br>
+        <div class="card col-xs-4">
+          <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
+          <div class="card-body">
+            <h5 class="card-title">Property 1: UTD </h5>
+            <p class="card-text"></p>
+            <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
+          </div>
+        </div>
+        <div class="card col-xs-4">
+          <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
+          <div class="card-body">
+            <h5 class="card-title">Property 1: UTD </h5>
+            <p class="card-text"></p>
+            <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
+          </div>
+        </div>
 
 
-          <div class="row">
-              <div class="card col-xs-4">
-                  <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
-                  <div class="card-body">
-                    <h5 class="card-title">Property 1: UTD </h5>
-                    <p class="card-text"></p>
-                    <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
-                  </div>
+        <div class="card col-xs-4 ">
+          <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
+          <div class="card-body">
+            <h5 class="card-title">Property 1: UTD </h5>
+            <p class="card-text"></p>
+            <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
+          </div>
+          <br>
+
+
+
+        </div>
+      </div>
+      <!-- <hr>
+
+      <hr>
+ -->
+
+      <h3> Applications: </h3>
+      <div *ngFor="let info of infoSentToServer">
+
+        <div class="bs-callout bs-callout-success">
+          <!-- <h3>{{info.contactEmail}} {{info.contactEmail}}</h3> -->
+          <h5>
+            <!-- <a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a> -->
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Past Applications:</h3>
               </div>
-              <div class="card col-xs-4">
-                  <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
-                  <div class="card-body">
-                    <h5 class="card-title">Property 1: UTD </h5>
-                    <p class="card-text"></p>
-                    <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
-                  </div>
+              <div class="panel-body">
+                <a routerLink="/" class="btn btn-primary">All</a>
+
+              </div>
             </div>
 
-            
-            <div class="card col-xs-4 ">
-                <img class="card-img-top" src="../../assets/property1.jpg" alt="Card image cap" style="width:200px; height:150px">
-                <div class="card-body">
-                  <h5 class="card-title">Property 1: UTD </h5>
-                  <p class="card-text"></p>
-                  <a routerLink="/tenant-rent-application-form" class="btn btn-primary">Apply to Rent</a>
-                </div>
-                <br>
-     
-     
-
-&nbsp; Past Applications:
-<div *ngFor="let info of infoSentToServer">
-
-  <div class="bs-callout bs-callout-success">
-    <h3>{{info.contactEmail}} {{info.contactEmail}}</h3>
-    <h5>
-      <a target="_top" href="mailto:{{info.applicantEmail}}">{{info.applicantEmail}}</a>
-
-    </h5>
-    <br>
-  </div>
-</div>
-</div></div></div>
+          </h5>
+          <br>
+        </div>
+      </div>
+    </div>
